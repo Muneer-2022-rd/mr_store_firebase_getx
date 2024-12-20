@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "399858240534",
+    "project_id": "mr-store-getx",
+    "storage_bucket": "mr-store-getx.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399858240534:android:58976d51c395eb37f47937",
+        "android_client_info": {
+          "package_name": "com.example.mr_store_getx_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChbZimtkpAJTlGJnrQUrv_mRZd1tbC6EY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

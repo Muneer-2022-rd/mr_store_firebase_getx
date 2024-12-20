@@ -1,0 +1,90 @@
+name: mr_store_getx_firebase
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  get: ^4.6.6
+  http: ^1.2.2
+  intl: ^0.19.0
+  url_launcher: ^6.3.1
+  iconsax: ^0.0.8
+  logger: ^2.5.0
+  get_storage: ^2.1.1
+  image_picker: ^1.1.2
+  awesome_snackbar_content: ^0.1.4
+  lottie: ^3.3.0
+  flutter_native_splash: ^2.4.3
+  smooth_page_indicator: ^1.2.0+3
+  flutter_screenutil: ^5.9.3
+  shimmer: ^3.0.0
+  cached_network_image: ^3.4.1
+  carousel_slider: ^5.0.0
+  readmore: ^3.0.0
+  flutter_rating_bar: ^4.0.1
+  shared_preferences: ^2.3.4
+  firebase_core: ^3.9.0
+  firebase_auth: ^5.3.4
+  firebase_storage: ^12.3.7
+  firebase_messaging: ^15.1.6
+  cloud_firestore: ^5.6.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/images/onboarding_images/
+    - assets/images/logo_images/
+    - assets/images/login_images/
+    - assets/images/products/
+    - assets/images/auth/
+    - assets/images/users/
+    - assets/images/brands/
+    - assets/images/payment/
+    - assets/images/success/
+    - assets/images/promo/
+    - assets/images/sub_categories/
+    
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins/Poppins-Black.ttf
+        - asset: assets/fonts/Poppins/Poppins-BlackItalic.ttf
+        - asset: assets/fonts/Poppins/Poppins-Bold.ttf
+        - asset: assets/fonts/Poppins/Poppins-BoldItalic.ttf
+        - asset: assets/fonts/Poppins/Poppins-ExtraBold.ttf
+        - asset: assets/fonts/Poppins/Poppins-ExtraBoldItalic.ttf
+        - asset: assets/fonts/Poppins/Poppins-ExtraLight.ttf
+        - asset: assets/fonts/Poppins/Poppins-ExtraLightItalic.ttf
+        - asset: assets/fonts/Poppins/Poppins-Italic.ttf
+        - asset: assets/fonts/Poppins/Poppins-Light.ttf
+        - asset: assets/fonts/Poppins/Poppins-LightItalic.ttf
+        - asset: assets/fonts/Poppins/Poppins-Medium.ttf
+        - asset: assets/fonts/Poppins/Poppins-MediumItalic.ttf
+        - asset: assets/fonts/Poppins/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins/Poppins-SemiBold.ttf
+        - asset: assets/fonts/Poppins/Poppins-SemiBoldItalic.ttf
+        - asset: assets/fonts/Poppins/Poppins-Thin.ttf
+        - asset: assets/fonts/Poppins/Poppins-ThinItalic.ttf
+    - family: Fustat
+      fonts:
+        - asset: assets/fonts/Fustat/Fustat-Bold.ttf
+        - asset: assets/fonts/Fustat/Fustat-ExtraBold.ttf
+        - asset: assets/fonts/Fustat/Fustat-ExtraLight.ttf
+        - asset: assets/fonts/Fustat/Fustat-Light.ttf
+        - asset: assets/fonts/Fustat/Fustat-Medium.ttf
+        - asset: assets/fonts/Fustat/Fustat-Regular.ttf
+        - asset: assets/fonts/Fustat/Fustat-SemiBold.ttf
