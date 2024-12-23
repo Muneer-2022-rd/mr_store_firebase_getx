@@ -19,10 +19,11 @@ class LoginController extends GetxController {
   final userController = Get.put(UserController());
   @override
   void onInit() {
-    email = TextEditingController();
-    password = TextEditingController();
-    email.text = localeStorage.read('REMEMBER_ME_EMAIL');
-    password.text = localeStorage.read('REMEMBER_ME_PASSWORD');
+    email =
+        TextEditingController(text: localeStorage.read('REMEMBER_ME_EMAIL'));
+    password =
+        TextEditingController(text: localeStorage.read('REMEMBER_ME_PASSWORD'));
+
     super.onInit();
   }
 
@@ -64,8 +65,7 @@ class LoginController extends GetxController {
         localeStorage.write('REMEMBER_ME_PASSWORD', password.text.trim());
       }
 
-      final userCredentials =
-          await AuthenticationRepository.instance.loginWithEmailAndPassword(
+      await AuthenticationRepository.instance.loginWithEmailAndPassword(
         email: email.text.trim(),
         password: password.text.trim(),
       );
@@ -96,6 +96,7 @@ class LoginController extends GetxController {
           await AuthenticationRepository.instance.loginWithGoogle();
       userController.saveUserRecord(userCredentials);
       TFullScreenLoader.stopLoading();
+      AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
       TLoader.errorStackBar(title: 'Oh Snap!', message: e.toString());
     }

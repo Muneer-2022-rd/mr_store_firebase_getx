@@ -1,6 +1,6 @@
-import 'package:mr_store_getx_firebase/features/authentication/screens/login/forget.dart';
+import 'package:mr_store_getx_firebase/features/authentication/screens/login/forget_password_screen.dart';
 import 'package:mr_store_getx_firebase/features/authentication/screens/login/login.dart';
-import 'package:mr_store_getx_firebase/features/authentication/screens/login/success.dart';
+import 'package:mr_store_getx_firebase/features/authentication/screens/login/reset_password_screen.dart';
 import 'package:mr_store_getx_firebase/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:mr_store_getx_firebase/features/authentication/screens/register/register.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/address/add_new_address.dart';
