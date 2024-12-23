@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:iconsax/iconsax.dart';
 import 'package:mr_store_getx_firebase/common/widgets/circular_icon.dart';
 import 'package:mr_store_getx_firebase/common/widgets/rounded_container.dart';
@@ -20,7 +20,7 @@ class ProductCardHorizontal extends StatelessWidget {
     final dark = THelperFunctions.isDarkMode(context);
     final textDirection = Directionality.of(context);
     return Container(
-      width: 310.w,
+      width: 310,
       padding: EdgeInsets.all(1),
       decoration: BoxDecoration(
           // boxShadow: [ShadowStyle.verticalProductShadow],
@@ -29,25 +29,25 @@ class ProductCardHorizontal extends StatelessWidget {
       child: Row(
         children: [
           RoundedContainer(
-            height: 120.h,
+            height: 120,
             backgroundColor: dark ? TColors.dark : TColors.white,
             child: Stack(
               children: [
                 SizedBox(
-                  width: 120.w,
-                  height: 120.h,
+                  width: 120,
+                  height: 120,
                   child: RoundedImage(
                     url: TImages.productBlue,
                     applyRadius: true,
                   ),
                 ),
                 Positioned(
-                  top: 12.h,
+                  top: 12,
                   right: textDirection == TextDirection.rtl ? 10 : null,
                   left: textDirection == TextDirection.ltr ? 10 : null,
                   child: RoundedContainer(
                     raduis: TSizes.sm,
-                    backgroundColor: TColors.secondry.withValues(alpha: 0.8),
+                    backgroundColor: TColors.secondary.withValues(alpha: 0.8),
                     padding: const EdgeInsets.symmetric(
                         horizontal: TSizes.sm, vertical: TSizes.xs),
                     child: Text(

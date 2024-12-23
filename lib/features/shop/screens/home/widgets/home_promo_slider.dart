@@ -5,7 +5,7 @@ import 'package:mr_store_getx_firebase/common/widgets/circular_container.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:get/get.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/rounded_image.dart';
 
@@ -53,8 +53,8 @@ class HomePromoSlider extends StatelessWidget {
             children: [
               for (int i = 0; i < 3; i++)
                 CircularContainer(
-                  width: 20.w,
-                  height: 4.h,
+                  width: 20,
+                  height: 4,
                   margin: const EdgeInsets.only(right: 10),
                   backgroundColor: controller.currentIndex.value == i
                       ? TColors.getPrimaryColor(context)

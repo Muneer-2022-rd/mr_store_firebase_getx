@@ -11,7 +11,7 @@ import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/product_details/product_details_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -27,7 +27,7 @@ class ProductCardVertical extends StatelessWidget {
         Get.to(() => const ProductDetailsScreen());
       },
       child: Container(
-        width: 180.w,
+        width: 180,
         decoration: BoxDecoration(
             boxShadow: [ShadowStyle.verticalProductShadow],
             borderRadius: BorderRadius.circular(TSizes.productImageRadius),
@@ -49,13 +49,13 @@ class ProductCardVertical extends StatelessWidget {
                       borderRadius: 25,
                     ),
                     Positioned(
-                      top: 12.h,
+                      top: 12,
                       right: textDirection == TextDirection.rtl ? 10 : null,
                       left: textDirection == TextDirection.ltr ? 10 : null,
                       child: RoundedContainer(
                         raduis: TSizes.sm,
                         backgroundColor:
-                            TColors.secondry.withValues(alpha: 0.8),
+                            TColors.secondary.withValues(alpha: 0.8),
                         padding: const EdgeInsets.symmetric(
                             horizontal: TSizes.sm, vertical: TSizes.xs),
                         child: Text(

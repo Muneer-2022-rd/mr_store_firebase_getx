@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TSizes {
   TSizes._();
@@ -15,12 +14,12 @@ class TSizes {
   static const double iconMd = 24.0;
   static const double iconLg = 32.0;
   // Font Sizes
-  static double fontSizeXs = 12.0.sp;
-  static double fontSizeSm = 14.0.sp;
-  static double fontSizeMd = 16.0.sp;
-  static double fontSizeLg = 18.0.sp;
-  static double fontSizeXl = 24.0.sp;
-  static double fontSizeXxl = 32.0.sp;
+  static double fontSizeXs = 12.0;
+  static double fontSizeSm = 14.0;
+  static double fontSizeMd = 16.0;
+  static double fontSizeLg = 18.0;
+  static double fontSizeXl = 24.0;
+  static double fontSizeXxl = 32.0;
   // Button Sizes
   static const double buttonHeight = 18.0;
   static const double buttonRadius = 12.0;

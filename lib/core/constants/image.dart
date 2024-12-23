@@ -43,4 +43,6 @@ class TImages {
   static String promoThree = '$root/promo/promo_three.jpg';
   // sub categories
   static String subCatCloth = '$root/sub_categories/cloth.jpg';
+  // lotties
+  static String loader = '$root/lotties/loader.json';
 }

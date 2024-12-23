@@ -10,7 +10,7 @@ import 'package:mr_store_getx_firebase/features/personalization/screens/settings
 import 'package:mr_store_getx_firebase/features/personalization/screens/settings/widgets/setting_menu_tile.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/settings/widgets/user_profile_tile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -42,7 +42,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                   ),
                   const UserProfileTile(),
-                  SizedBox(height: TSizes.spaceBtnSections.h),
+                  SizedBox(height: TSizes.spaceBtnSections),
                 ],
               ),
             ),

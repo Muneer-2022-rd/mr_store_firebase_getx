@@ -7,7 +7,6 @@ import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/store/widgets/brand_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BrandShowCase extends StatelessWidget {
   final List<String> images;
@@ -36,7 +35,7 @@ class BrandShowCase extends StatelessWidget {
               Get.toNamed(AppRoute.brandProducts);
             },
           ),
-          SizedBox(height: TSizes.spaceBtnItems.h),
+          SizedBox(height: TSizes.spaceBtnItems),
           Row(
             children: images
                 .map((image) => brandTopProductImageWidget(image, context))
@@ -50,7 +49,7 @@ class BrandShowCase extends StatelessWidget {
   Widget brandTopProductImageWidget(String image, context) {
     return Expanded(
       child: RoundedContainer(
-        height: 100.h,
+        height: 100,
         backgroundColor: THelperFunctions.isDarkMode(context)
             ? TColors.darkerGrey
             : TColors.light,

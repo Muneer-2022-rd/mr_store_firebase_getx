@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:mr_store_getx_firebase/common/widgets/custom_app_bar.dart';
 import 'package:mr_store_getx_firebase/common/widgets/seaction_heading.dart';
 import 'package:mr_store_getx_firebase/core/constants/image.dart';
@@ -40,7 +40,7 @@ class SubCategoriesScreen extends StatelessWidget {
                   ),
                   SizedBox(height: TSizes.spaceBtnItems),
                   SizedBox(
-                    height: 120.h,
+                    height: 120,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       separatorBuilder: (context, index) =>

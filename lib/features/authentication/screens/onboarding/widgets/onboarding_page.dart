@@ -1,7 +1,6 @@
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnBoardingPage extends StatelessWidget {
   final String title;
@@ -21,8 +20,8 @@ class OnBoardingPage extends StatelessWidget {
       child: Column(
         children: [
           Image(
-            width: (THelperFunctions.screenWidth() * 0.8).w,
-            height: (THelperFunctions.screenHeight() * 0.5).h,
+            width: (THelperFunctions.screenWidth() * 0.8),
+            height: (THelperFunctions.screenHeight() * 0.5),
             image: AssetImage(image),
           ),
           Text(

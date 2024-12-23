@@ -2,7 +2,6 @@ import 'package:mr_store_getx_firebase/common/widgets/circular_image.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileImage extends StatelessWidget {
   final String url;
@@ -18,8 +17,8 @@ class ProfileImage extends StatelessWidget {
       children: [
         CircularImage(
           url: url,
-          width: 150.w,
-          height: 150.h,
+          width: 150,
+          height: 150,
         ),
         Positioned(
           bottom: 0,

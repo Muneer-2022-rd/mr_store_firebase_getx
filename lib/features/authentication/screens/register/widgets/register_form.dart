@@ -1,24 +1,21 @@
 import 'package:mr_store_getx_firebase/common/widgets/custom_text_form_field.dart';
-import 'package:mr_store_getx_firebase/features/authentication/controllers/register_controller.dart';
-import 'package:mr_store_getx_firebase/core/constants/routes.dart';
+import 'package:mr_store_getx_firebase/features/authentication/controllers/register/register_controller.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
-import 'package:mr_store_getx_firebase/core/validators/validation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class RegisterForm extends StatelessWidget {
-  const RegisterForm({
-    super.key,
-  });
+  const RegisterForm({super.key});
 
   @override
   Widget build(BuildContext context) {
     final controller = RegisterController.instance;
     final textDirection = Directionality.of(context);
     return Form(
+      key: controller.signupFormKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: TSizes.spaceBtnSections),
         child: Column(
@@ -30,7 +27,9 @@ class RegisterForm extends StatelessWidget {
                     labelText: TTexts.userFirst,
                     prefixIcon: Iconsax.user,
                     keyboardType: TextInputType.text,
-                    controller: controller.firstController,
+                    controller: controller.firstName,
+                    // validator: (value) =>
+                    // TValidator.validateEmptyText(value, TTexts.userFirst),
                   ),
                 ),
                 const SizedBox(width: TSizes.spaceBtwInputFields),
@@ -39,7 +38,9 @@ class RegisterForm extends StatelessWidget {
                     labelText: TTexts.userLast,
                     prefixIcon: Iconsax.user,
                     keyboardType: TextInputType.text,
-                    controller: controller.lastController,
+                    controller: controller.lastName,
+                    // validator: (value) =>
+                    // TValidator.validateEmptyText(value, TTexts.userLast),
                   ),
                 ),
               ],
@@ -49,7 +50,9 @@ class RegisterForm extends StatelessWidget {
               labelText: TTexts.userName,
               prefixIcon: Iconsax.personalcard,
               keyboardType: TextInputType.text,
-              controller: controller.usernameController,
+              controller: controller.userName,
+              // validator: (value) =>
+              // TValidator.validateEmptyText(value, TTexts.userName),
             ),
             const SizedBox(height: TSizes.spaceBtwInputFields),
             CustomTextFormField(
@@ -58,8 +61,8 @@ class RegisterForm extends StatelessWidget {
                   ? Iconsax.direct_right
                   : Iconsax.direct_left,
               keyboardType: TextInputType.emailAddress,
-              controller: controller.emailController,
-              validator: (value) => TValidator.validateEmail(value),
+              controller: controller.email,
+              // validator: (value) => TValidator.validateEmail(value),
             ),
             const SizedBox(height: TSizes.spaceBtwInputFields),
             Obx(() => CustomTextFormField(
@@ -67,8 +70,8 @@ class RegisterForm extends StatelessWidget {
                   labelText: TTexts.userPassword,
                   prefixIcon: Iconsax.password_check,
                   keyboardType: TextInputType.visiblePassword,
-                  controller: controller.passwordController,
-                  validator: (value) => TValidator.validatePassword(value),
+                  controller: controller.password,
+                  // validator: (value) => TValidator.validatePassword(value),
                   suffixIcon: IconButton(
                     onPressed: controller.showHidePassword,
                     icon: Icon(controller.obscureText.value == true
@@ -81,8 +84,8 @@ class RegisterForm extends StatelessWidget {
               children: [
                 Obx(() => Checkbox(
                       visualDensity: VisualDensity.comfortable,
-                      value: controller.agreeToPrivacyAndTerms.value,
-                      onChanged: controller.agreeToPrivacyAndTermsCheckbox,
+                      value: controller.privacyPolicy.value,
+                      onChanged: controller.privacyPolicyCheckbox,
                     )),
                 Flexible(
                   child: RichText(
@@ -119,7 +122,7 @@ class RegisterForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => Get.toNamed(AppRoute.verify),
+                onPressed: () => controller.signup(),
                 child: Text(TTexts.register),
               ),
             ),

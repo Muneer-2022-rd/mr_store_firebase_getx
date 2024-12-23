@@ -1,4 +1,4 @@
-import 'package:mr_store_getx_firebase/features/authentication/controllers/onboarding_controller.dart';
+import 'package:mr_store_getx_firebase/features/authentication/controllers/onboarding/onboarding_controller.dart';
 import 'package:mr_store_getx_firebase/features/authentication/models/onboarding_model.dart';
 import 'package:mr_store_getx_firebase/features/authentication/screens/onboarding/widgets/onboarding_dot_navigation.dart';
 import 'package:mr_store_getx_firebase/features/authentication/screens/onboarding/widgets/onboarding_next.dart';
@@ -33,7 +33,9 @@ class OnBoardingScreen extends StatelessWidget {
         children: [
           PageView.builder(
             controller: controller.pageController,
-            onPageChanged: controller.updatePageIndicator,
+            onPageChanged: (index) {
+              controller.updatePageIndicator(index);
+            },
             itemCount: pagesList.length,
             itemBuilder: (context, index) => OnBoardingPage(
               title: pagesList[index].title,

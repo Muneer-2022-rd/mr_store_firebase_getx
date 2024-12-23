@@ -12,7 +12,6 @@ import 'package:mr_store_getx_firebase/common/widgets/search_container.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/store/widgets/store_featured_brand_list.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -45,20 +44,20 @@ class StoreScreen extends StatelessWidget {
                 backgroundColor: THelperFunctions.isDarkMode(context)
                     ? TColors.black
                     : TColors.white,
-                expandedHeight: 380.h,
+                expandedHeight: 380,
                 flexibleSpace: Padding(
                   padding: const EdgeInsets.all(TSizes.defaultSpace),
                   child: ListView(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
-                      SizedBox(height: TSizes.spaceBtnItems.h),
+                      SizedBox(height: TSizes.spaceBtnItems),
                       const SearchContainer(
                         showBoarder: true,
                         showBackground: false,
                         padding: EdgeInsets.zero,
                       ),
-                      SizedBox(height: TSizes.spaceBtnSections.h),
+                      SizedBox(height: TSizes.spaceBtnSections),
                       SeactionHeading(
                         showActionButton: true,
                         title: TTexts.storeFeaturedBrandsTitle,
@@ -67,7 +66,7 @@ class StoreScreen extends StatelessWidget {
                           Get.toNamed(AppRoute.allBrands);
                         },
                       ),
-                      SizedBox(height: TSizes.spaceBtnItems.h / 1.5),
+                      SizedBox(height: TSizes.spaceBtnItems / 1.5),
                       const StoreFeaturedBrandsList(),
                     ],
                   ),

@@ -1,5 +1,5 @@
 import 'package:mr_store_getx_firebase/common/widgets/custom_text_form_field.dart';
-import 'package:mr_store_getx_firebase/features/authentication/controllers/login_controller.dart';
+import 'package:mr_store_getx_firebase/features/authentication/controllers/login/login_controller.dart';
 import 'package:mr_store_getx_firebase/core/constants/routes.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';

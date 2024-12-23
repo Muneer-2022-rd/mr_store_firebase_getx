@@ -8,7 +8,7 @@ import 'package:mr_store_getx_firebase/features/personalization/screens/profile/
 import 'package:mr_store_getx_firebase/features/personalization/screens/profile/widgets/profile_image.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:iconsax/iconsax.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -31,13 +31,13 @@ class ProfileScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ProfileImage(url: TImages.settingsMan),
-              SizedBox(height: TSizes.spaceBtnItems.h),
+              SizedBox(height: TSizes.spaceBtnItems),
               const AccountTypeCard(accountType: 'Google'),
-              SizedBox(height: TSizes.spaceBtnItems.h / 2),
+              SizedBox(height: TSizes.spaceBtnItems / 2),
               const Divider(),
-              SizedBox(height: TSizes.spaceBtnItems.h),
+              SizedBox(height: TSizes.spaceBtnItems),
               const SeactionHeading(title: 'Profile Information'),
-              SizedBox(height: TSizes.spaceBtnItems.h),
+              SizedBox(height: TSizes.spaceBtnItems),
               ProfileMenu(
                 title: 'User-ID',
                 value: '234234',
@@ -50,11 +50,11 @@ class ProfileScreen extends StatelessWidget {
                 iconData: Iconsax.copy,
                 onPressed: () {},
               ),
-              SizedBox(height: TSizes.spaceBtnItems.h / 2),
+              SizedBox(height: TSizes.spaceBtnItems / 2),
               const Divider(),
-              SizedBox(height: TSizes.spaceBtnItems.h),
+              SizedBox(height: TSizes.spaceBtnItems),
               const SeactionHeading(title: 'Personal Information'),
-              SizedBox(height: TSizes.spaceBtnItems.h),
+              SizedBox(height: TSizes.spaceBtnItems),
               ProfileMenu(
                 title: 'Username',
                 value: 'muniro2027',
@@ -80,9 +80,9 @@ class ProfileScreen extends StatelessWidget {
                 value: '10 Oct, 1997',
                 onPressed: () {},
               ),
-              SizedBox(height: TSizes.spaceBtnItems.h / 2),
+              SizedBox(height: TSizes.spaceBtnItems / 2),
               const Divider(),
-              SizedBox(height: TSizes.spaceBtnItems.h),
+              SizedBox(height: TSizes.spaceBtnItems),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -92,7 +92,7 @@ class ProfileScreen extends StatelessWidget {
                     color: TColors.getPrimaryColor(context),
                     onPressed: () {},
                   ),
-                  SizedBox(height: TSizes.spaceBtnItems.h),
+                  SizedBox(height: TSizes.spaceBtnItems),
                   CustomActionButton(
                     icon: Iconsax.trash,
                     label: 'Delete Account',

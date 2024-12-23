@@ -4,12 +4,13 @@ import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
 class TColors {
   TColors._();
   // app colors
-  static Color primary = Color(0xffFD2400);
-  static Color secondry = Color(0xfffa7354);
-  static Color third = Color(0xffFF8C66);
-  static Color primaryDark = Color(0xffa5311d);
-  static Color primarySecondry = Color(0xff8A2719);
-  static Color primaryThird = Color(0xff6E1E13);
+  static Color primary = Color(0xFF007C39); // Main color
+  static Color secondary =
+      Color(0xFF00A04D); // Slightly lighter and more saturated
+  static Color third = Color(0xFF33B36A); // Even lighter green tone
+  static Color primaryDark = Color(0xFF005C2B); // Darker green
+  static Color primarySecondary = Color(0xFF00481F); // A deep green shade
+  static Color primaryThird = Color(0xFF003A18); // Darkest green
 
   static Color getPrimaryColor(BuildContext context) {
     if (THelperFunctions.isDarkMode(context)) {
@@ -21,9 +22,9 @@ class TColors {
 
   static Color getSecondryColor(BuildContext context) {
     if (THelperFunctions.isDarkMode(context)) {
-      return TColors.primarySecondry;
+      return TColors.primarySecondary;
     } else {
-      return TColors.secondry;
+      return TColors.secondary;
     }
   }
 

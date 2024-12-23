@@ -5,7 +5,6 @@ import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/vertic
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeCategories extends StatelessWidget {
   const HomeCategories({
@@ -16,7 +15,7 @@ class HomeCategories extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isRtl = Directionality.of(context) == TextDirection.rtl;
     return SizedBox(
-      height: 80.h,
+      height: 80,
       child: ListView.builder(
         itemCount: 8,
         scrollDirection: Axis.horizontal,

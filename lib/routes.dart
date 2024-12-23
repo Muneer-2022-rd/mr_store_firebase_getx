@@ -3,8 +3,6 @@ import 'package:mr_store_getx_firebase/features/authentication/screens/login/log
 import 'package:mr_store_getx_firebase/features/authentication/screens/login/success.dart';
 import 'package:mr_store_getx_firebase/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:mr_store_getx_firebase/features/authentication/screens/register/register.dart';
-import 'package:mr_store_getx_firebase/features/authentication/screens/register/success.dart';
-import 'package:mr_store_getx_firebase/features/authentication/screens/register/verify.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/address/add_new_address.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/address/addresses_screen.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/brand/all_brands_screen.dart';
@@ -26,13 +24,11 @@ import 'package:mr_store_getx_firebase/core/constants/routes.dart';
 import 'package:get/get.dart';
 
 List<GetPage<dynamic>>? routes = [
-  //  Auth
-  // GetPage(name: '/', page: () => const HomeScreen()),
   GetPage(name: "/", page: () => const OnBoardingScreen()),
   GetPage(name: AppRoute.login, page: () => const LoginScreen()),
   GetPage(name: AppRoute.register, page: () => const RegisterScreen()),
-  GetPage(name: AppRoute.verify, page: () => const VerifyScreen()),
-  GetPage(name: AppRoute.success, page: () => const SuccessScreen()),
+  // GetPage(name: AppRoute.verify, page: () => const VerifyScreen()),
+  // GetPage(name: AppRoute.success, page: () => const VerifyEmailScreen()),
   GetPage(
       name: AppRoute.forgetPassword, page: () => const ForgetPasswordScreen()),
   GetPage(

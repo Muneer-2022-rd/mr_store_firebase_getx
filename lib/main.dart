@@ -1,42 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:mr_store_getx_firebase/firebase_options.dart';
-import 'package:mr_store_getx_firebase/routes.dart';
-import 'package:mr_store_getx_firebase/core/locale/locale.dart';
-import 'package:mr_store_getx_firebase/core/theme/theme.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:mr_store_getx_firebase/app.dart';
+import 'package:mr_store_getx_firebase/data/repositories/authentication/authentication_repository.dart';
+import 'package:mr_store_getx_firebase/firebase_options.dart';
+import 'package:flutter/material.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  final WidgetsBinding widgetsBinding =
+      WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
+      .then((FirebaseApp value) => Get.put(AuthenticationRepository()));
   runApp(const MyApp());
 }
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) {
-        return GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          debugShowMaterialGrid: false,
-          themeMode: ThemeMode.system,
-          theme: TAppTheme.lightTheme,
-          darkTheme: TAppTheme.darkTheme,
-          locale: Get.deviceLocale,
-          fallbackLocale: Get.deviceLocale,
-          translations: MyLocale(),
-          getPages: routes,
-          home: child,
-        );
-      },
-    );
-  }
-}
-// flutter build apk --split-per-abi

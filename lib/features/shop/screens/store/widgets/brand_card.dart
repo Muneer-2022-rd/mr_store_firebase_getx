@@ -6,7 +6,6 @@ import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/store/widgets/brand_tile_with_verified_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BrandCard extends StatelessWidget {
   final void Function()? onTap;
@@ -35,7 +34,7 @@ class BrandCard extends StatelessWidget {
                 backroundColor: Colors.transparent,
               ),
             ),
-            SizedBox(width: TSizes.spaceBtnItems.w / 2),
+            SizedBox(width: TSizes.spaceBtnItems / 2),
             Expanded(
               child: Column(
                 mainAxisSize: MainAxisSize.min,

@@ -1,13 +1,12 @@
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TNavigationBarTheme {
   TNavigationBarTheme._();
   static NavigationBarThemeData lightNavigationBarTheme =
       NavigationBarThemeData(
-    height: 80.h,
+    height: 80,
     elevation: 1,
     overlayColor:
         WidgetStatePropertyAll(TColors.primary.withValues(alpha: 0.05)),
@@ -25,7 +24,7 @@ class TNavigationBarTheme {
     ),
   );
   static NavigationBarThemeData darkNavigationBarTheme = NavigationBarThemeData(
-    height: 80.h,
+    height: 80,
     elevation: 1,
     overlayColor:
         WidgetStatePropertyAll(TColors.primaryDark.withValues(alpha: 0.4)),

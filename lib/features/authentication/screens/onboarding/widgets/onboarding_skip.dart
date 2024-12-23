@@ -1,4 +1,4 @@
-import 'package:mr_store_getx_firebase/features/authentication/controllers/onboarding_controller.dart';
+import 'package:mr_store_getx_firebase/features/authentication/controllers/onboarding/onboarding_controller.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 import 'package:mr_store_getx_firebase/core/device/utility.dart';

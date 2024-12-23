@@ -1,7 +1,6 @@
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/device/utility.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RatingProgressIndicator extends StatelessWidget {
   final String text;
@@ -28,7 +27,7 @@ class RatingProgressIndicator extends StatelessWidget {
           child: SizedBox(
             width: TDeviceUtility.getScreenWidth(context) * 0.8,
             child: LinearProgressIndicator(
-              minHeight: 12.h,
+              minHeight: 12,
               value: value,
               backgroundColor: TColors.grey,
               borderRadius: BorderRadius.circular(7),

@@ -2,7 +2,6 @@ import 'package:mr_store_getx_firebase/common/widgets/circular_container.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChoiceChipWidget extends StatelessWidget {
   final String text;
@@ -28,8 +27,8 @@ class ChoiceChipWidget extends StatelessWidget {
         labelStyle: TextStyle(color: selected ? TColors.white : TColors.black),
         avatar: isColor
             ? CircularContainer(
-                width: 50.w,
-                height: 50.h,
+                width: 50,
+                height: 50,
                 backgroundColor: color,
               )
             : null,

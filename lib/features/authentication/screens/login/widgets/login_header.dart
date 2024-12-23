@@ -3,7 +3,6 @@ import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginHeader extends StatelessWidget {
   const LoginHeader({
@@ -17,7 +16,7 @@ class LoginHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Image(
-          height: 120.h,
+          height: 120,
           image: AssetImage(dark ? TImages.logoDarkImage : TImages.logoImage),
         ),
         const SizedBox(height: TSizes.sm),

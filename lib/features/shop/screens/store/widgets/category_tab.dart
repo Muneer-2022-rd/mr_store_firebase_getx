@@ -6,7 +6,6 @@ import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/product_card_vertical.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/store/widgets/brand_show_case.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryTab extends StatelessWidget {
   const CategoryTab({
@@ -38,12 +37,12 @@ class CategoryTab extends StatelessWidget {
                 showActionButton: true,
                 buttonTitle: TTexts.homeShowAllButton,
               ),
-              SizedBox(height: TSizes.spaceBtnItems.h),
+              SizedBox(height: TSizes.spaceBtnItems),
               CustomGridLayout(
                 itemCount: 3,
                 itemBuilder: (context, index) => const ProductCardVertical(),
               ),
-              SizedBox(height: TSizes.spaceBtnSections.h),
+              SizedBox(height: TSizes.spaceBtnSections),
             ],
           ),
         ),

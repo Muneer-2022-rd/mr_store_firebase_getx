@@ -2,7 +2,6 @@ import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VerticalImageText extends StatelessWidget {
   final String image, imageTitle;
@@ -29,8 +28,8 @@ class VerticalImageText extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              width: 56.w,
-              height: 56.h,
+              width: 56,
+              height: 56,
               padding: const EdgeInsets.all(TSizes.sm),
               decoration: BoxDecoration(
                 color:
@@ -49,7 +48,7 @@ class VerticalImageText extends StatelessWidget {
             ),
             const SizedBox(height: TSizes.spaceBtnItems / 2),
             SizedBox(
-              width: 55.w,
+              width: 55,
               child: Text(
                 imageTitle,
                 style: Theme.of(context)

@@ -6,7 +6,6 @@ import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BillingPaymentSection extends StatelessWidget {
   const BillingPaymentSection({super.key});
@@ -34,8 +33,8 @@ class BillingPaymentSection extends StatelessWidget {
                         child: Row(
                           children: [
                             RoundedContainer(
-                              width: 40.w,
-                              height: 40.h,
+                              width: 40,
+                              height: 40,
                               backgroundColor:
                                   dark ? TColors.darkerGrey : TColors.white,
                               padding: const EdgeInsets.all(TSizes.sm),
@@ -57,8 +56,8 @@ class BillingPaymentSection extends StatelessWidget {
                         child: Row(
                           children: [
                             RoundedContainer(
-                              width: 40.w,
-                              height: 40.h,
+                              width: 40,
+                              height: 40,
                               backgroundColor:
                                   dark ? TColors.darkerGrey : TColors.white,
                               padding: const EdgeInsets.all(TSizes.sm),
@@ -85,8 +84,8 @@ class BillingPaymentSection extends StatelessWidget {
         Row(
           children: [
             RoundedContainer(
-              width: 40.w,
-              height: 40.h,
+              width: 40,
+              height: 40,
               backgroundColor: dark ? TColors.darkerGrey : TColors.white,
               padding: const EdgeInsets.all(TSizes.sm),
               child: Image(

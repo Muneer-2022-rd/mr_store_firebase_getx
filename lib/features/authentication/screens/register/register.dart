@@ -1,4 +1,4 @@
-import 'package:mr_store_getx_firebase/features/authentication/controllers/register_controller.dart';
+import 'package:mr_store_getx_firebase/features/authentication/controllers/register/register_controller.dart';
 import 'package:mr_store_getx_firebase/features/authentication/screens/login/widgets/form_divider.dart';
 import 'package:mr_store_getx_firebase/features/authentication/screens/login/widgets/social_buttons.dart';
 import 'package:mr_store_getx_firebase/features/authentication/screens/register/widgets/register_form.dart';

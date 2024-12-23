@@ -1,7 +1,7 @@
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:iconsax/iconsax.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
 
@@ -33,8 +33,8 @@ class CartCounterIcon extends StatelessWidget {
         Positioned(
           right: 0,
           child: Container(
-            width: 18.w,
-            height: 18.h,
+            width: 18,
+            height: 18,
             decoration: BoxDecoration(
                 color: backgroundNumberColor ??
                     (dark ? TColors.white : TColors.black),
