@@ -36,7 +36,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                 labelText: TTexts.userEmail,
                 prefixIcon: Iconsax.direct_right,
                 keyboardType: TextInputType.emailAddress,
-                controller: controller.emailController,
+                controller: controller.email,
                 validator: (value) => TValidator.validateEmail(value),
               ),
               const SizedBox(height: TSizes.spaceBtnItems),

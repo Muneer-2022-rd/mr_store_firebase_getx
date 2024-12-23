@@ -28,7 +28,7 @@ class LoginForm extends StatelessWidget {
                   ? Iconsax.direct_right
                   : Iconsax.direct_left,
               keyboardType: TextInputType.emailAddress,
-              controller: controller.emailController,
+              controller: controller.email,
               validator: (value) => TValidator.validateEmail(value),
             ),
             const SizedBox(height: TSizes.spaceBtwInputFields),
@@ -38,7 +38,7 @@ class LoginForm extends StatelessWidget {
                 labelText: TTexts.userPassword,
                 prefixIcon: Iconsax.password_check4,
                 keyboardType: TextInputType.visiblePassword,
-                controller: controller.passwordController,
+                controller: controller.password,
                 validator: (value) => TValidator.validatePassword(value),
                 suffixIcon: IconButton(
                   onPressed: controller.showHidePassword,

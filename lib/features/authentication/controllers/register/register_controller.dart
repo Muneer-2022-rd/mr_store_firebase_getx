@@ -78,14 +78,14 @@ class RegisterController extends GetxController {
         return;
       }
 
-      final userCredential =
+      final userCredentials =
           await AuthenticationRepository.instance.registerWithEmailAndPassword(
         email: email.text.trim(),
         password: password.text.trim(),
       );
 
       final user = UserModel(
-          id: userCredential.user!.uid,
+          id: userCredentials.user!.uid,
           email: email.text.trim(),
           userName: userName.text.trim(),
           firstName: firstName.text.trim(),
