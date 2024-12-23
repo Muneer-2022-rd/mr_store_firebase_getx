@@ -6,6 +6,7 @@ import 'package:mr_store_getx_firebase/core/constants/image.dart';
 import 'package:mr_store_getx_firebase/core/popups/full_screen_loader.dart';
 import 'package:mr_store_getx_firebase/core/popups/loader.dart';
 import 'package:mr_store_getx_firebase/data/repositories/authentication/authentication_repository.dart';
+import 'package:mr_store_getx_firebase/features/personalization/controllers/user_controller.dart';
 
 class LoginController extends GetxController {
   static LoginController get instance => Get.find();
@@ -15,6 +16,7 @@ class LoginController extends GetxController {
   Rx<bool> obscureText = true.obs;
   Rx<bool> rememberMe = true.obs;
   final localeStorage = GetStorage();
+  final userController = Get.put(UserController());
   @override
   void onInit() {
     email = TextEditingController();
@@ -39,7 +41,7 @@ class LoginController extends GetxController {
     rememberMe.value = newRememberMe!;
   }
 
-  signin() async {
+  emailAndPasswordSignIn() async {
     try {
       TFullScreenLoader.openLoadingDialog(
         'Logging you in ..',
@@ -73,6 +75,28 @@ class LoginController extends GetxController {
       AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
       TFullScreenLoader.stopLoading();
+      TLoader.errorStackBar(title: 'Oh Snap!', message: e.toString());
+    }
+  }
+
+  googleSignIn() async {
+    try {
+      TFullScreenLoader.openLoadingDialog(
+        'Logging you in ..',
+        TImages.loader,
+      );
+
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        TFullScreenLoader.stopLoading();
+        return;
+      }
+
+      final userCredentials =
+          await AuthenticationRepository.instance.loginWithGoogle();
+      userController.saveUserRecord(userCredentials);
+      TFullScreenLoader.stopLoading();
+    } catch (e) {
       TLoader.errorStackBar(title: 'Oh Snap!', message: e.toString());
     }
   }

@@ -88,7 +88,7 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: OutlinedButton(
-                onPressed: () => Get.toNamed(AppRoute.register),
+                onPressed: () => controller.emailAndPasswordSignIn(),
                 child: Text(TTexts.register),
               ),
             ),

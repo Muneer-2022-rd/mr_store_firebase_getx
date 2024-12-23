@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mr_store_getx_firebase/core/constants/routes.dart';
 import 'package:mr_store_getx_firebase/core/exceptions/firebase_auth_exception.dart';
 import 'package:mr_store_getx_firebase/core/exceptions/firebase_exception.dart';
@@ -61,6 +62,29 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
+  Future<UserCredential?> loginWithGoogle() async {
+    try {
+      final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication? googleAuth =
+          await userAccount?.authentication;
+      final credentials = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      return await _auth.signInWithCredential(credentials);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(code: e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on FormatException catch (e) {
+      throw TFormatException(code: e.toString());
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      return null;
+    }
+  }
+
   Future<UserCredential> registerWithEmailAndPassword({
     required String email,
     required String password,
@@ -101,6 +125,7 @@ class AuthenticationRepository extends GetxController {
 
   Future<void> logout() async {
     try {
+      await GoogleSignIn().signOut();
       await _auth.signOut();
       Get.offAllNamed(AppRoute.login);
     } on FirebaseAuthException catch (e) {

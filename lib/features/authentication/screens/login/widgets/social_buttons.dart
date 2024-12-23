@@ -2,12 +2,14 @@ import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/image.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:mr_store_getx_firebase/features/authentication/controllers/login/login_controller.dart';
 
 class SocialButtons extends StatelessWidget {
   const SocialButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = LoginController.instance;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -17,7 +19,7 @@ class SocialButtons extends StatelessWidget {
             borderRadius: BorderRadius.circular(100),
           ),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () => controller.googleSignIn(),
             icon: Image(
               width: TSizes.iconMd,
               height: TSizes.iconMd,
