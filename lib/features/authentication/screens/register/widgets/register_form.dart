@@ -1,4 +1,5 @@
 import 'package:mr_store_getx_firebase/common/widgets/custom_text_form_field.dart';
+import 'package:mr_store_getx_firebase/core/validators/validation.dart';
 import 'package:mr_store_getx_firebase/features/authentication/controllers/register/register_controller.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
@@ -28,8 +29,8 @@ class RegisterForm extends StatelessWidget {
                     prefixIcon: Iconsax.user,
                     keyboardType: TextInputType.text,
                     controller: controller.firstName,
-                    // validator: (value) =>
-                    // TValidator.validateEmptyText(value, TTexts.userFirst),
+                    validator: (value) =>
+                    TValidator.validateEmptyText(value, TTexts.userFirst),
                   ),
                 ),
                 const SizedBox(width: TSizes.spaceBtwInputFields),
@@ -39,8 +40,8 @@ class RegisterForm extends StatelessWidget {
                     prefixIcon: Iconsax.user,
                     keyboardType: TextInputType.text,
                     controller: controller.lastName,
-                    // validator: (value) =>
-                    // TValidator.validateEmptyText(value, TTexts.userLast),
+                    validator: (value) =>
+                    TValidator.validateEmptyText(value, TTexts.userLast),
                   ),
                 ),
               ],
@@ -51,8 +52,8 @@ class RegisterForm extends StatelessWidget {
               prefixIcon: Iconsax.personalcard,
               keyboardType: TextInputType.text,
               controller: controller.userName,
-              // validator: (value) =>
-              // TValidator.validateEmptyText(value, TTexts.userName),
+              validator: (value) =>
+              TValidator.validateEmptyText(value, TTexts.userName),
             ),
             const SizedBox(height: TSizes.spaceBtwInputFields),
             CustomTextFormField(
@@ -62,7 +63,7 @@ class RegisterForm extends StatelessWidget {
                   : Iconsax.direct_left,
               keyboardType: TextInputType.emailAddress,
               controller: controller.email,
-              // validator: (value) => TValidator.validateEmail(value),
+              validator: (value) => TValidator.validateEmail(value),
             ),
             const SizedBox(height: TSizes.spaceBtwInputFields),
             Obx(() => CustomTextFormField(
@@ -71,7 +72,7 @@ class RegisterForm extends StatelessWidget {
                   prefixIcon: Iconsax.password_check,
                   keyboardType: TextInputType.visiblePassword,
                   controller: controller.password,
-                  // validator: (value) => TValidator.validatePassword(value),
+                  validator: (value) => TValidator.validatePassword(value),
                   suffixIcon: IconButton(
                     onPressed: controller.showHidePassword,
                     icon: Icon(controller.obscureText.value == true

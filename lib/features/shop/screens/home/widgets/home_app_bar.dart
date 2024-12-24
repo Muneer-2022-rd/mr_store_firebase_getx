@@ -1,4 +1,6 @@
+import 'package:mr_store_getx_firebase/common/widgets/TShimmer_effect.dart';
 import 'package:mr_store_getx_firebase/core/constants/routes.dart';
+import 'package:mr_store_getx_firebase/features/personalization/controllers/user_controller.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/cart_counter_icon.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
@@ -13,6 +15,7 @@ class HomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(UserController());
     return CustomAppBar(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,14 +28,20 @@ class HomeAppBar extends StatelessWidget {
                 .labelMedium!
                 .copyWith(color: TColors.white),
           ),
-          Text(
-            'Muneer Radwan',
-            textAlign: TextAlign.start,
-            style: Theme.of(context)
-                .textTheme
-                .headlineSmall!
-                .copyWith(color: TColors.white),
-          ),
+          Obx(() {
+            if (controller.profileLoading.value) {
+              return const TShimmerEffect(height: 15, width: 80);
+            } else {
+              return Text(
+                controller.user.value.fullName,
+                textAlign: TextAlign.start,
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall!
+                    .copyWith(color: TColors.white),
+              );
+            }
+          }),
         ],
       ),
       actions: [

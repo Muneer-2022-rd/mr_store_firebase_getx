@@ -1,8 +1,10 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
+import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import '../constants/colors.dart';
 
 class THelperFunctions {
@@ -194,4 +196,10 @@ class THelperFunctions {
     return wrappedList;
   }
 
+  static void copyText(String copiedText) {
+    Clipboard.setData(ClipboardData(text: copiedText)).then((_) {
+      Get.snackbar(copiedText, "Copied to Clipboard!",
+          margin: EdgeInsets.all(TSizes.spaceBtnItems));
+    });
+  }
 }

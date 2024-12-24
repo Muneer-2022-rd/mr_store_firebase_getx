@@ -11,6 +11,11 @@ class AppRoute {
   static const String store = "/store";
   static const String settings = "/settings";
   static const String profile = "/profile";
+  static const String changeName = "/change_name";
+  static const String changeGender = "/change_gender";
+  static const String changeBirthDate = "/change_birthdate";
+  static const String changePhoneNumber = "/change_phone";
+  static const String changeUsername = "/change_username";
   static const String productDetails = "/product_details";
   static const String productReviews = "/product_reviews";
   static const String address = "/address";

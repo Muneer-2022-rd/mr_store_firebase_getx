@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mr_store_getx_firebase/core/formatters/formatter.dart';
 
 class UserModel {
   String? id;
@@ -65,7 +66,11 @@ class UserModel {
     };
   }
 
+  String get fullName => "$firstName $lastName";
+  String get formattedPhoneNu => TFormatter.formatPhoneNumber(phoneNumber!);
+
   static List<String> nameParts(fullName) => fullName.split(' ');
+
   static String generateUserName(fullName) {
     List<String> nameParts = fullName.split(' ');
     String firstName = nameParts[0].toLowerCase();

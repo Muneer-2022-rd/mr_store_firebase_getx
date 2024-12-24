@@ -5,6 +5,11 @@ import 'package:mr_store_getx_firebase/features/authentication/screens/onboardin
 import 'package:mr_store_getx_firebase/features/authentication/screens/register/register.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/address/add_new_address.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/address/addresses_screen.dart';
+import 'package:mr_store_getx_firebase/features/personalization/screens/profile/change_birthdate.dart';
+import 'package:mr_store_getx_firebase/features/personalization/screens/profile/change_gender.dart';
+import 'package:mr_store_getx_firebase/features/personalization/screens/profile/change_name.dart';
+import 'package:mr_store_getx_firebase/features/personalization/screens/profile/change_phone.dart';
+import 'package:mr_store_getx_firebase/features/personalization/screens/profile/change_username.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/brand/all_brands_screen.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/brand/brand_products_screen.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/order/orders_screen.dart';
@@ -39,6 +44,11 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.store, page: () => const StoreScreen()),
   GetPage(name: AppRoute.settings, page: () => const SettingsScreen()),
   GetPage(name: AppRoute.profile, page: () => const ProfileScreen()),
+  GetPage(name: AppRoute.changeName, page: () => const ChangeNameScreen()),
+  GetPage(name: AppRoute.changeGender, page: () => const ChangeGenderScreen()),
+  GetPage(name: AppRoute.changeBirthDate, page: () => const ChangeBirthDateScreen()),
+  GetPage(name: AppRoute.changePhoneNumber, page: () => const ChangePhoneScreen()),
+  GetPage(name: AppRoute.changeUsername, page: () => const ChangeUserNameScreen()),
   GetPage(
       name: AppRoute.productDetails, page: () => const ProductDetailsScreen()),
   GetPage(

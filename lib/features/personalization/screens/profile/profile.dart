@@ -1,8 +1,13 @@
+import 'package:get/get.dart';
 import 'package:mr_store_getx_firebase/common/widgets/custom_app_bar.dart';
 import 'package:mr_store_getx_firebase/common/widgets/seaction_heading.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/image.dart';
+import 'package:mr_store_getx_firebase/core/constants/routes.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
+import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
+import 'package:mr_store_getx_firebase/data/repositories/authentication/authentication_repository.dart';
+import 'package:mr_store_getx_firebase/features/personalization/controllers/user_controller.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/profile/widgets/account_type_card.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/profile/widgets/custom_action_button.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/profile/widgets/profile_image.dart';
@@ -16,6 +21,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       appBar: CustomAppBar(
         title: Text(
@@ -32,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
             children: [
               ProfileImage(url: TImages.settingsMan),
               SizedBox(height: TSizes.spaceBtnItems),
-              const AccountTypeCard(accountType: 'Google'),
+              const AccountTypeCard(),
               SizedBox(height: TSizes.spaceBtnItems / 2),
               const Divider(),
               SizedBox(height: TSizes.spaceBtnItems),
@@ -40,15 +46,17 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(height: TSizes.spaceBtnItems),
               ProfileMenu(
                 title: 'User-ID',
-                value: '234234',
+                value: controller.user.value.id!,
                 iconData: Iconsax.copy,
-                onPressed: () {},
+                onPressed: () =>
+                    THelperFunctions.copyText(controller.user.value.email!),
               ),
               ProfileMenu(
                 title: 'E-mail',
-                value: 'firebase.projects.1997@gmail.com',
+                value: controller.user.value.email!,
                 iconData: Iconsax.copy,
-                onPressed: () {},
+                onPressed: () =>
+                    THelperFunctions.copyText(controller.user.value.email!),
               ),
               SizedBox(height: TSizes.spaceBtnItems / 2),
               const Divider(),
@@ -57,28 +65,28 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(height: TSizes.spaceBtnItems),
               ProfileMenu(
                 title: 'Username',
-                value: 'muniro2027',
-                onPressed: () {},
+                value: controller.user.value.userName!,
+                onPressed: () => Get.toNamed(AppRoute.changeUsername),
               ),
               ProfileMenu(
                 title: 'Name',
-                value: 'Muneer Radwan',
-                onPressed: () {},
+                value: controller.user.value.fullName,
+                onPressed: () => Get.toNamed(AppRoute.changeName),
               ),
               ProfileMenu(
                 title: 'Phone Number',
-                value: '(963) 934840928',
-                onPressed: () {},
+                value: controller.user.value.phoneNumber ?? '',
+                onPressed: () => Get.toNamed(AppRoute.changePhoneNumber),
               ),
               ProfileMenu(
                 title: 'Gender',
-                value: 'Male',
-                onPressed: () {},
+                value: controller.user.value.gender ?? '',
+                onPressed: () => Get.toNamed(AppRoute.changeGender),
               ),
               ProfileMenu(
                 title: 'Date Of Birth',
-                value: '10 Oct, 1997',
-                onPressed: () {},
+                value: controller.user.value.birthDate ?? '',
+                onPressed: () => Get.toNamed(AppRoute.changeBirthDate),
               ),
               SizedBox(height: TSizes.spaceBtnItems / 2),
               const Divider(),
@@ -90,14 +98,14 @@ class ProfileScreen extends StatelessWidget {
                     icon: Iconsax.logout,
                     label: 'Logout',
                     color: TColors.getPrimaryColor(context),
-                    onPressed: () {},
+                    onPressed: () => AuthenticationRepository.instance.logout(),
                   ),
                   SizedBox(height: TSizes.spaceBtnItems),
                   CustomActionButton(
                     icon: Iconsax.trash,
                     label: 'Delete Account',
                     color: TColors.darkerGrey,
-                    onPressed: () {},
+                    onPressed: () => controller.deleteAccountWarningPopup(),
                   ),
                 ],
               ),

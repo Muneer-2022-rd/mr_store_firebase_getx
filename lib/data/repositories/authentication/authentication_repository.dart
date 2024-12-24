@@ -9,6 +9,7 @@ import 'package:mr_store_getx_firebase/core/exceptions/firebase_auth_exception.d
 import 'package:mr_store_getx_firebase/core/exceptions/firebase_exception.dart';
 import 'package:mr_store_getx_firebase/core/exceptions/format_exception.dart';
 import 'package:mr_store_getx_firebase/core/exceptions/platform_exception.dart';
+import 'package:mr_store_getx_firebase/data/repositories/user/user_repository.dart';
 import 'package:mr_store_getx_firebase/features/authentication/screens/login/login.dart';
 import 'package:mr_store_getx_firebase/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:mr_store_getx_firebase/features/authentication/screens/register/verify_email_screen.dart';
@@ -17,6 +18,7 @@ class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance;
+  User? get authUser => _auth.currentUser;
   @override
   void onReady() {
     super.onReady();
@@ -49,6 +51,25 @@ class AuthenticationRepository extends GetxController {
         email: email,
         password: password,
       );
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(code: e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on FormatException catch (e) {
+      throw TFormatException(code: e.toString());
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  Future<void> reAuthenticateWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: password);
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthException(code: e.code).message;
     } on FirebaseException catch (e) {
@@ -155,5 +176,39 @@ class AuthenticationRepository extends GetxController {
     } catch (e) {
       throw 'Something went wrong. Please try again';
     }
+  }
+
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepository.instance.removeUserRecord(_auth.currentUser!.uid);
+      await _auth.currentUser?.delete();
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on FormatException catch (e) {
+      throw TFormatException(code: e.toString());
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  String? checkSignInMethod() {
+    if (authUser != null) {
+      for (var provider in authUser!.providerData) {
+        if (provider.providerId == 'google.com') {
+          return 'Google';
+        } else if (provider.providerId == 'password') {
+          return 'Email And Password';
+        } else if (provider.providerId == 'phone') {
+          return 'Phone Number';
+        } else {
+          return 'Unknown Provider';
+        }
+      }
+    } else {
+      return 'User Not Sign in yet';
+    }
+    return 'Unknown Error';
   }
 }
