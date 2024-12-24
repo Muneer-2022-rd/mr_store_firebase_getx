@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mr_store_getx_firebase/core/constants/collections.dart';
 import 'package:mr_store_getx_firebase/core/exceptions/firebase_exception.dart';
 import 'package:mr_store_getx_firebase/core/exceptions/format_exception.dart';
@@ -13,6 +17,7 @@ class UserRepository extends GetxController {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   Future<void> saveUserRecord({required UserModel user}) async {
     try {
+      print("google sign in 2");
       await _db.collection(TCollections.users).doc(user.id).set(user.toJson());
     } on FirebaseException catch (e) {
       throw TFirebaseException(code: e.code).message;
@@ -87,6 +92,23 @@ class UserRepository extends GetxController {
           .collection(TCollections.users)
           .doc(userId)
           .delete();
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on FormatException catch (e) {
+      throw TFormatException(code: e.toString());
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+  
+    Future<String> uploadImageFile(String path, XFile image) async {
+    try {
+      final ref = FirebaseStorage.instance.ref(path).child(image.name);
+      await ref.putFile(File(image.path));
+      final url = ref.getDownloadURL();
+      return url;
     } on FirebaseException catch (e) {
       throw TFirebaseException(code: e.code).message;
     } on FormatException catch (e) {

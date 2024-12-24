@@ -32,8 +32,6 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: "/", page: () => const OnBoardingScreen()),
   GetPage(name: AppRoute.login, page: () => const LoginScreen()),
   GetPage(name: AppRoute.register, page: () => const RegisterScreen()),
-  // GetPage(name: AppRoute.verify, page: () => const VerifyScreen()),
-  // GetPage(name: AppRoute.success, page: () => const VerifyEmailScreen()),
   GetPage(
       name: AppRoute.forgetPassword, page: () => const ForgetPasswordScreen()),
   GetPage(
@@ -46,9 +44,13 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.profile, page: () => const ProfileScreen()),
   GetPage(name: AppRoute.changeName, page: () => const ChangeNameScreen()),
   GetPage(name: AppRoute.changeGender, page: () => const ChangeGenderScreen()),
-  GetPage(name: AppRoute.changeBirthDate, page: () => const ChangeBirthDateScreen()),
-  GetPage(name: AppRoute.changePhoneNumber, page: () => const ChangePhoneScreen()),
-  GetPage(name: AppRoute.changeUsername, page: () => const ChangeUserNameScreen()),
+  GetPage(
+      name: AppRoute.changeBirthDate,
+      page: () => const ChangeBirthDateScreen()),
+  GetPage(
+      name: AppRoute.changePhoneNumber, page: () => const ChangePhoneScreen()),
+  GetPage(
+      name: AppRoute.changeUsername, page: () => const ChangeUserNameScreen()),
   GetPage(
       name: AppRoute.productDetails, page: () => const ProductDetailsScreen()),
   GetPage(

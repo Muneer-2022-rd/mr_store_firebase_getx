@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:mr_store_getx_firebase/common/widgets/custom_app_bar.dart';
 import 'package:mr_store_getx_firebase/common/widgets/seaction_heading.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
-import 'package:mr_store_getx_firebase/core/constants/image.dart';
 import 'package:mr_store_getx_firebase/core/constants/routes.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
@@ -36,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ProfileImage(url: TImages.settingsMan),
+              ProfileImage(),
               SizedBox(height: TSizes.spaceBtnItems),
               const AccountTypeCard(),
               SizedBox(height: TSizes.spaceBtnItems / 2),

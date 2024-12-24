@@ -80,7 +80,7 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => Get.toNamed(AppRoute.navigationMenu),
+                onPressed: () => controller.emailAndPasswordSignIn(),
                 child: Text(TTexts.login),
               ),
             ),
@@ -88,7 +88,7 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: OutlinedButton(
-                onPressed: () => controller.emailAndPasswordSignIn(),
+                onPressed: () => Get.toNamed(AppRoute.register),
                 child: Text(TTexts.register),
               ),
             ),

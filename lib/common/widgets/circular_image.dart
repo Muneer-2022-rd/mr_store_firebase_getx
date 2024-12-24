@@ -17,6 +17,7 @@ class CircularImage extends StatelessWidget {
     this.backroundColor,
     this.fit = BoxFit.cover,
     this.overlayColor,
+    this.radius = 100
   });
   final bool? isNetworkImage;
   final String url;
@@ -26,6 +27,7 @@ class CircularImage extends StatelessWidget {
   final Color? backroundColor;
   final BoxFit? fit;
   final Color? overlayColor;
+  final double radius;
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +40,14 @@ class CircularImage extends StatelessWidget {
             (THelperFunctions.isDarkMode(context)
                 ? TColors.black
                 : TColors.white),
-        borderRadius: BorderRadius.circular(100),
+        borderRadius: BorderRadius.circular(radius),
       ),
       child: isNetworkImage!
           ? ClipRRect(
-              borderRadius: BorderRadius.circular(100),
+              borderRadius: BorderRadius.circular(radius),
               child: CachedNetworkImage(
                 fit: fit,
                 imageUrl: url,
-                // color: overlayColor!.withValues(alpha: 0.1),
                 placeholder: (context, url) => Shimmer.fromColors(
                   baseColor: THelperFunctions.isDarkMode(context)
                       ? TColors.white

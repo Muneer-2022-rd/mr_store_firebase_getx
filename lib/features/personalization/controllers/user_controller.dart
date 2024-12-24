@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mr_store_getx_firebase/controllers/network_manager.dart';
+import 'package:mr_store_getx_firebase/core/constants/collections.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/image.dart';
 import 'package:mr_store_getx_firebase/core/constants/routes.dart';
@@ -17,6 +19,7 @@ class UserController extends GetxController {
   Rx<UserModel> user = UserModel.empty().obs;
   final userRepository = Get.put(UserRepository());
   final profileLoading = false.obs;
+  final imageUploading = false.obs;
   GlobalKey<FormState> reAuthFormKey = GlobalKey<FormState>();
   final verifyEmail = TextEditingController();
   final verifyPassword = TextEditingController();
@@ -42,6 +45,7 @@ class UserController extends GetxController {
   Future<void> saveUserRecord(UserCredential? userCredential) async {
     try {
       if (userCredential != null) {
+        print("google sign in 1");
         final nameParts =
             UserModel.nameParts(userCredential.user!.displayName ?? '');
         final username =
@@ -53,7 +57,7 @@ class UserController extends GetxController {
           firstName: nameParts[0],
           lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
           phoneNumber: userCredential.user!.phoneNumber ?? '',
-          profilePicture: userCredential.user!.photoURL,
+          profilePicture: userCredential.user!.photoURL ?? '',
         );
         await userRepository.saveUserRecord(user: user);
       }
@@ -144,5 +148,32 @@ class UserController extends GetxController {
 
   showHidePassword() {
     obscureText.value = !obscureText.value;
+  }
+
+  uploadUserProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 70,
+        maxHeight: 512,
+        maxWidth: 512,
+      );
+      if (image != null) {
+        imageUploading.value = true;
+        final imageUrl = await userRepository.uploadImageFile(
+            '${TCollections.users}/Images/Profile/', image);
+        Map<String, dynamic> json = {'profilePicture': imageUrl};
+        await userRepository.updateSingleField(json);
+        user.value.profilePicture = imageUrl;
+        user.refresh();
+        TLoader.successStackBar(
+            title: 'Congraduation',
+            message: 'your profile image has been updated!');
+      }
+    } catch (e) {
+      TLoader.warningStackBar(title: 'Oh Snap!', message: e.toString());
+    } finally {
+      imageUploading.value = false;
+    }
   }
 }

@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:mr_store_getx_firebase/app.dart';
 import 'package:mr_store_getx_firebase/data/repositories/authentication/authentication_repository.dart';
-import 'package:mr_store_getx_firebase/firebase_options.dart';
 import 'package:flutter/material.dart';
+import 'package:mr_store_getx_firebase/firebase_options.dart';
 
 void main() async {
   final WidgetsBinding widgetsBinding =

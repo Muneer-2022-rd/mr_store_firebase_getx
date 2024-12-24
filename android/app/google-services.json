@@ -1,45 +1,45 @@
 {
   "project_info": {
-    "project_number": "399858240534",
-    "project_id": "mr-store-getx",
-    "storage_bucket": "mr-store-getx.firebasestorage.app"
+    "project_number": "110570371578",
+    "project_id": "fir-ecommerce-customer",
+    "storage_bucket": "fir-ecommerce-customer.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:399858240534:android:58976d51c395eb37f47937",
+        "mobilesdk_app_id": "1:110570371578:android:f476206659b9908ec2cc43",
         "android_client_info": {
           "package_name": "com.example.mr_store_getx_firebase"
         }
       },
       "oauth_client": [
         {
-          "client_id": "399858240534-oopd3phg8j0d3vg61nofj6bl93k0kerq.apps.googleusercontent.com",
+          "client_id": "110570371578-s7t1e8u9bvqono606e7k4m60kn4sk9lt.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.mr_store_getx_firebase",
-            "certificate_hash": "f708a192f4c3916bfa814da6d41fb949472f902b"
+            "certificate_hash": "b14acec8361f505471e6564779489914e4c3c933"
           }
         },
         {
-          "client_id": "399858240534-i6kmheq1fn6da0u4f12hudl54a43p2sm.apps.googleusercontent.com",
+          "client_id": "110570371578-9cc8k8t92ks2rvmqnil6rjk335aokv0i.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyChbZimtkpAJTlGJnrQUrv_mRZd1tbC6EY"
+          "current_key": "AIzaSyCZ1FfqeUmZ8k_kmCtYYEStgwozaG-7dco"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "399858240534-i6kmheq1fn6da0u4f12hudl54a43p2sm.apps.googleusercontent.com",
+              "client_id": "110570371578-9cc8k8t92ks2rvmqnil6rjk335aokv0i.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "399858240534-1apfvon6e6afhh3llkqk9urbf6ncln3t.apps.googleusercontent.com",
+              "client_id": "110570371578-0cpmvsjdjnbtcpqv6pth0toe1m0r10sj.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.example.mrStoreGetxFirebase"
