@@ -11,7 +11,6 @@ class OnBoardingController extends GetxController {
 
   void updatePageIndicator(int index) {
     currentPageIndex.value = index;
-    print("Current Page Index Updated: $index");
   }
 
   void dotNavigationClick(int index) {

@@ -17,7 +17,6 @@ class UserRepository extends GetxController {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   Future<void> saveUserRecord({required UserModel user}) async {
     try {
-      print("google sign in 2");
       await _db.collection(TCollections.users).doc(user.id).set(user.toJson());
     } on FirebaseException catch (e) {
       throw TFirebaseException(code: e.code).message;

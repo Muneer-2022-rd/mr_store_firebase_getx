@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:mr_store_getx_firebase/common/widgets/TShimmer_effect.dart';
+import 'package:mr_store_getx_firebase/common/widgets/shimmer_effect.dart';
 import 'package:mr_store_getx_firebase/common/widgets/circular_image.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/image.dart';
@@ -24,7 +24,7 @@ class ProfileImage extends StatelessWidget {
           final image =
               networkImage!.isNotEmpty ? networkImage : TImages.settingsMan;
           return controller.imageUploading.value
-              ? TShimmerEffect(height: 150, width: 150, radius: 100)
+              ? ShimmerEffect(height: 150, width: 150, radius: 100)
               : CircularImage(
                   url: image,
                   width: 150,

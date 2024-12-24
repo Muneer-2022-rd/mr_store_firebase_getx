@@ -5,8 +5,8 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../../../../core/constants/colors.dart';
 
-class TShimmerEffect extends StatelessWidget {
-  const TShimmerEffect(
+class ShimmerEffect extends StatelessWidget {
+  const ShimmerEffect(
       {super.key,
       required this.height,
       required this.width,

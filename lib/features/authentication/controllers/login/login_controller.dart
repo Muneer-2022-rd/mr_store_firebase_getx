@@ -93,7 +93,6 @@ class LoginController extends GetxController {
 
       final userCredentials =
           await AuthenticationRepository.instance.loginWithGoogle();
-      print("google sign in 0");
       userController.saveUserRecord(userCredentials);
       TFullScreenLoader.stopLoading();
       AuthenticationRepository.instance.screenRedirect();

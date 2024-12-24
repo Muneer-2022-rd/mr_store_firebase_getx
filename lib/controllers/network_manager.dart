@@ -32,7 +32,7 @@ class NetworkManager extends GetxController {
     
     try {
       final result = await _connectivity.checkConnectivity();
-      if (result == ConnectivityResult.none) {
+      if (result.first == ConnectivityResult.none) {
         return false;
       } else {
         return true;

@@ -1,4 +1,4 @@
-import 'package:mr_store_getx_firebase/common/widgets/TShimmer_effect.dart';
+import 'package:mr_store_getx_firebase/common/widgets/shimmer_effect.dart';
 import 'package:mr_store_getx_firebase/core/constants/routes.dart';
 import 'package:mr_store_getx_firebase/features/personalization/controllers/user_controller.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/cart_counter_icon.dart';
@@ -30,7 +30,7 @@ class HomeAppBar extends StatelessWidget {
           ),
           Obx(() {
             if (controller.profileLoading.value) {
-              return const TShimmerEffect(height: 15, width: 80);
+              return const ShimmerEffect(height: 15, width: 80);
             } else {
               return Text(
                 controller.user.value.fullName,

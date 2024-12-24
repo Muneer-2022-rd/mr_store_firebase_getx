@@ -45,7 +45,6 @@ class UserController extends GetxController {
   Future<void> saveUserRecord(UserCredential? userCredential) async {
     try {
       if (userCredential != null) {
-        print("google sign in 1");
         final nameParts =
             UserModel.nameParts(userCredential.user!.displayName ?? '');
         final username =

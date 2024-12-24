@@ -1,3 +1,4 @@
+import 'package:mr_store_getx_firebase/common/widgets/shimmer_effect.dart';
 import 'package:mr_store_getx_firebase/common/widgets/circular_image.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/image.dart';
@@ -17,11 +18,21 @@ class UserProfileTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = UserController.instance;
     return ListTile(
-      leading: CircularImage(
-          url: TImages.settingsMan,
-          width: 50,
-          height: 50,
-          padding: EdgeInsets.zero),
+      leading: Obx(() {
+        final networkImage = controller.user.value.profilePicture;
+        final image =
+            networkImage!.isNotEmpty ? networkImage : TImages.settingsMan;
+        return controller.imageUploading.value
+            ? ShimmerEffect(height: 50, width: 50, radius: 100)
+            : CircularImage(
+                url: image,
+                width: 50,
+                height: 50,
+                fit: BoxFit.cover,
+                padding: EdgeInsets.zero,
+                isNetworkImage: networkImage.isNotEmpty,
+              );
+      }),
       title: Text(controller.user.value.fullName,
           overflow: TextOverflow.ellipsis,
           style: Theme.of(context)
