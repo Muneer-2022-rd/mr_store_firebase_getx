@@ -3,7 +3,7 @@ import 'package:mr_store_getx_firebase/common/widgets/custom_app_bar.dart';
 import 'package:mr_store_getx_firebase/common/widgets/rounded_container.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/image.dart';
-import 'package:mr_store_getx_firebase/core/constants/routes.dart';
+
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
@@ -14,6 +14,7 @@ import 'package:mr_store_getx_firebase/features/shop/screens/checkout/widgets/bi
 import 'package:mr_store_getx_firebase/features/shop/screens/checkout/widgets/copun_code.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mr_store_getx_firebase/navigation_menu.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
@@ -68,7 +69,7 @@ class CheckoutScreen extends StatelessWidget {
                 title: TTexts.successPayment,
                 subtitle: TTexts.orderProccessingSubtitle,
                 onPressed: () {
-                  Get.toNamed(AppRoute.navigationMenu);
+                  Get.to(() => NavigationMenu());
                 },
               ),
             );

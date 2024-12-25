@@ -6,12 +6,13 @@ import 'package:mr_store_getx_firebase/controllers/network_manager.dart';
 import 'package:mr_store_getx_firebase/core/constants/collections.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/image.dart';
-import 'package:mr_store_getx_firebase/core/constants/routes.dart';
+
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/popups/full_screen_loader.dart';
 import 'package:mr_store_getx_firebase/core/popups/loader.dart';
 import 'package:mr_store_getx_firebase/data/repositories/authentication/authentication_repository.dart';
 import 'package:mr_store_getx_firebase/data/repositories/user/user_repository.dart';
+import 'package:mr_store_getx_firebase/features/authentication/screens/login/login.dart';
 import 'package:mr_store_getx_firebase/features/personalization/models/user_model.dart';
 
 class UserController extends GetxController {
@@ -105,10 +106,10 @@ class UserController extends GetxController {
           await auth.loginWithGoogle();
           await auth.deleteAccount();
           TFullScreenLoader.stopLoading();
-          Get.offAll(AppRoute.login);
+          Get.offAll(() => LoginScreen());
         } else if (provider == 'password') {
           TFullScreenLoader.stopLoading();
-          Get.offAll(AppRoute.login);
+          Get.offAll(() => LoginScreen());
         }
       }
     } catch (e) {
@@ -138,7 +139,7 @@ class UserController extends GetxController {
               verifyEmail.text.trim(), verifyPassword.text.trim());
       await AuthenticationRepository.instance.deleteAccount();
       TFullScreenLoader.stopLoading();
-      Get.offAllNamed(AppRoute.login);
+      Get.offAll(()=>LoginScreen());
     } catch (e) {
       TFullScreenLoader.stopLoading();
       TLoader.warningStackBar(title: 'Oh Snap!', message: e.toString());

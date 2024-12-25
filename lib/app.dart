@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:mr_store_getx_firebase/bindings/general_binding.dart';
 import 'package:mr_store_getx_firebase/core/locale/locale.dart';
 import 'package:mr_store_getx_firebase/core/theme/theme.dart';
-import 'package:mr_store_getx_firebase/features/authentication/screens/onboarding/onboarding.dart';
-import 'package:mr_store_getx_firebase/routes.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -21,8 +19,8 @@ class MyApp extends StatelessWidget {
       locale: Get.deviceLocale,
       fallbackLocale: Get.deviceLocale,
       translations: MyLocale(),
-      getPages: routes,
-      home: OnBoardingScreen(),
+      // getPages: routes,
+      home: Scaffold(body: Center(child: CircularProgressIndicator())),
       initialBinding: GeneralBindings(),
     );
   }

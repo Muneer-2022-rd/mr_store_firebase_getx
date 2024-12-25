@@ -1,8 +1,9 @@
 import 'package:mr_store_getx_firebase/common/widgets/custom_app_bar.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
-import 'package:mr_store_getx_firebase/core/constants/routes.dart';
+
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
+import 'package:mr_store_getx_firebase/features/personalization/screens/address/add_new_address.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/address/widgets/single_address.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,7 +23,7 @@ class UserAddressScreen extends StatelessWidget {
           color: TColors.white,
         ),
         onPressed: () {
-          Get.toNamed(AppRoute.addAddress);
+          Get.to(() => AddNewAddressScreen());
         },
       ),
       appBar: CustomAppBar(

@@ -1,12 +1,12 @@
 import 'package:mr_store_getx_firebase/common/styles/spacing_style.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/image.dart';
-import 'package:mr_store_getx_firebase/core/constants/routes.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mr_store_getx_firebase/features/authentication/controllers/forget_password/forget_password_controller.dart';
+import 'package:mr_store_getx_firebase/features/authentication/screens/login/login.dart';
 
 class SuccessResetPasswordScreen extends StatelessWidget {
   final String? email;
@@ -52,7 +52,7 @@ class SuccessResetPasswordScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Get.offAllNamed(AppRoute.login),
+                  onPressed: () => Get.offAll(()=> LoginScreen()),
                   child: Text(TTexts.done),
                 ),
               ),

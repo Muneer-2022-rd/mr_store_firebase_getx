@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:mr_store_getx_firebase/core/constants/routes.dart';
+import 'package:mr_store_getx_firebase/features/authentication/screens/login/login.dart';
 
 class OnBoardingController extends GetxController {
   static OnBoardingController get instance => Get.find();
@@ -24,7 +24,7 @@ class OnBoardingController extends GetxController {
   void nextPage() {
     if (currentPageIndex.value == 2) {
       storage.writeIfNull('IsFirstTime', false);
-      Get.offAllNamed(AppRoute.login);
+      Get.offAll(() => LoginScreen());
     } else {
       int page = currentPageIndex.value + 1;
       pageController.animateToPage(
@@ -37,7 +37,7 @@ class OnBoardingController extends GetxController {
 
   void skipPage() {
     storage.writeIfNull('IsFirstTime', false);
-    Get.offAllNamed(AppRoute.login);
+    Get.offAll(() => LoginScreen());
   }
 
   @override

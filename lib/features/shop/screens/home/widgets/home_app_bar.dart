@@ -1,6 +1,6 @@
 import 'package:mr_store_getx_firebase/common/widgets/shimmer_effect.dart';
-import 'package:mr_store_getx_firebase/core/constants/routes.dart';
 import 'package:mr_store_getx_firebase/features/personalization/controllers/user_controller.dart';
+import 'package:mr_store_getx_firebase/features/shop/screens/cart/cart_screen.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/cart_counter_icon.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
@@ -47,7 +47,7 @@ class HomeAppBar extends StatelessWidget {
       actions: [
         CartCounterIcon(
           onPressed: () {
-            Get.toNamed(AppRoute.cart);
+            Get.to(() => CartScreen());
           },
           iconColor: TColors.white,
           numberColor: TColors.white,

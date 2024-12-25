@@ -4,7 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:mr_store_getx_firebase/core/constants/routes.dart';
+
 import 'package:mr_store_getx_firebase/core/exceptions/firebase_auth_exception.dart';
 import 'package:mr_store_getx_firebase/core/exceptions/firebase_exception.dart';
 import 'package:mr_store_getx_firebase/core/exceptions/format_exception.dart';
@@ -13,6 +13,7 @@ import 'package:mr_store_getx_firebase/data/repositories/user/user_repository.da
 import 'package:mr_store_getx_firebase/features/authentication/screens/login/login.dart';
 import 'package:mr_store_getx_firebase/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:mr_store_getx_firebase/features/authentication/screens/register/verify_email_screen.dart';
+import 'package:mr_store_getx_firebase/navigation_menu.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -30,7 +31,7 @@ class AuthenticationRepository extends GetxController {
     final user = _auth.currentUser;
     if (user != null) {
       if (user.emailVerified) {
-        Get.offAllNamed(AppRoute.navigationMenu);
+        Get.offAll(() => NavigationMenu());
       } else {
         Get.offAll(() => VerifyEmailScreen(email: _auth.currentUser?.email));
       }
@@ -164,7 +165,7 @@ class AuthenticationRepository extends GetxController {
     try {
       await GoogleSignIn().signOut();
       await _auth.signOut();
-      Get.offAllNamed(AppRoute.login);
+      Get.offAll(LoginScreen());
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthException(code: e.code).message;
     } on FirebaseException catch (e) {

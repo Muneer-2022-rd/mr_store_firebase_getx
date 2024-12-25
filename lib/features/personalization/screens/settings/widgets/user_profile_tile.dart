@@ -2,12 +2,13 @@ import 'package:mr_store_getx_firebase/common/widgets/shimmer_effect.dart';
 import 'package:mr_store_getx_firebase/common/widgets/circular_image.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/image.dart';
-import 'package:mr_store_getx_firebase/core/constants/routes.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:mr_store_getx_firebase/features/personalization/controllers/user_controller.dart';
+import 'package:mr_store_getx_firebase/features/personalization/screens/profile/profile.dart';
 
 class UserProfileTile extends StatelessWidget {
   const UserProfileTile({
@@ -47,7 +48,7 @@ class UserProfileTile extends StatelessWidget {
               .apply(color: TColors.white)),
       trailing: InkWell(
         onTap: () {
-          Get.toNamed(AppRoute.profile);
+          Get.to(() => ProfileScreen());
         },
         child: const Icon(
           Iconsax.edit,

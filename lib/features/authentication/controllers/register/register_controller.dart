@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mr_store_getx_firebase/controllers/network_manager.dart';
+import 'package:mr_store_getx_firebase/core/constants/collections.dart';
 import 'package:mr_store_getx_firebase/core/constants/image.dart';
 import 'package:mr_store_getx_firebase/core/popups/full_screen_loader.dart';
 import 'package:mr_store_getx_firebase/core/popups/loader.dart';
@@ -78,29 +79,40 @@ class RegisterController extends GetxController {
         return;
       }
 
-      final userCredentials =
-          await AuthenticationRepository.instance.registerWithEmailAndPassword(
-        email: email.text.trim(),
-        password: password.text.trim(),
-      );
-
-      final user = UserModel(
-          id: userCredentials.user!.uid,
+      if (await UserRepository.instance
+          .isFieldFound(TCollections.users, 'userName', userName.text.trim())) {
+        TFullScreenLoader.stopLoading();
+        TLoader.errorStackBar(
+          title: 'Username Taken',
+          message:
+              'The username "${userName.text.trim()}" is already in use. Please choose a different one.',
+        );
+        return;
+      } else {
+        final userCredentials = await AuthenticationRepository.instance
+            .registerWithEmailAndPassword(
           email: email.text.trim(),
-          userName: userName.text.trim(),
-          firstName: firstName.text.trim(),
-          lastName: lastName.text.trim(),
-          phoneNumber: phone.text.trim(),
-          profilePicture: '');
-      final userRepository = Get.put(UserRepository());
+          password: password.text.trim(),
+        );
 
-      await userRepository.saveUserRecord(user: user);
-      TFullScreenLoader.stopLoading();
-      TLoader.successStackBar(
-        title: 'Congraduation',
-        message: 'your account has been created!, Verify account to continue',
-      );
-      Get.to(VerifyEmailScreen(email: email.text.trim()));
+        final user = UserModel(
+            id: userCredentials.user!.uid,
+            email: email.text.trim(),
+            userName: userName.text.trim(),
+            firstName: firstName.text.trim(),
+            lastName: lastName.text.trim(),
+            phoneNumber: phone.text.trim(),
+            profilePicture: '');
+        final userRepository = Get.put(UserRepository());
+
+        await userRepository.saveUserRecord(user: user);
+        TFullScreenLoader.stopLoading();
+        TLoader.successStackBar(
+          title: 'Congraduation',
+          message: 'your account has been created!, Verify account to continue',
+        );
+        Get.to(VerifyEmailScreen(email: email.text.trim()));
+      }
     } catch (e) {
       TFullScreenLoader.stopLoading();
       TLoader.errorStackBar(title: 'Oh Snap!', message: e.toString());

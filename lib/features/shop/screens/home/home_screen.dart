@@ -1,6 +1,5 @@
 import 'package:mr_store_getx_firebase/common/widgets/custom_grid_layout.dart';
 import 'package:mr_store_getx_firebase/common/widgets/seaction_heading.dart';
-import 'package:mr_store_getx_firebase/core/constants/routes.dart';
 import 'package:mr_store_getx_firebase/core/extensions/widget_list_spacing.dart';
 import 'package:mr_store_getx_firebase/features/shop/controllers/home_controller.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/home_app_bar.dart';
@@ -14,6 +13,7 @@ import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/product_card_vertical.dart';
+import 'package:mr_store_getx_firebase/features/shop/screens/product/all_products_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                     title: TTexts.homePopularProductsHeading,
                     buttonTitle: TTexts.homeShowAllButton,
                     onPressed: () {
-                      Get.toNamed(AppRoute.allProducts);
+                      Get.to(() => AllProductsScreen());
                     },
                   ),
                   const SizedBox(height: TSizes.spaceBtnItems),

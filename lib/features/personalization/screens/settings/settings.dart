@@ -1,11 +1,13 @@
 import 'package:mr_store_getx_firebase/common/widgets/custom_app_bar.dart';
 import 'package:mr_store_getx_firebase/common/widgets/rounded_container.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
-import 'package:mr_store_getx_firebase/core/constants/routes.dart';
+
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/common/widgets/seaction_heading.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
+import 'package:mr_store_getx_firebase/features/dummy_data/screens/dummy_data_screen.dart';
+import 'package:mr_store_getx_firebase/features/personalization/screens/address/addresses_screen.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/settings/widgets/primary_left_header_container.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/settings/widgets/setting_menu_tile.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/settings/widgets/user_profile_tile.dart';
@@ -13,6 +15,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:mr_store_getx_firebase/features/shop/screens/order/orders_screen.dart';
+import 'package:mr_store_getx_firebase/features/shop/screens/wishlist/wishlist_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -58,7 +62,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     subTitle: TTexts.wishlistSubtitle,
                     leadingIcon: Iconsax.heart,
                     onTap: () {
-                      Get.toNamed(AppRoute.wishlist);
+                      Get.to(() => FavoriteScreen());
                     },
                   ),
                   SettingMenuTile(
@@ -66,20 +70,22 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       subTitle: TTexts.ordersSubtitle,
                       leadingIcon: Iconsax.box,
                       onTap: () {
-                        Get.toNamed(AppRoute.orders);
+                        Get.to(() => OrdersScreen());
                       }),
                   SettingMenuTile(
                       title: TTexts.addresses,
                       subTitle: TTexts.addressesSubtitle,
                       leadingIcon: Iconsax.location,
                       onTap: () {
-                        Get.toNamed(AppRoute.address);
+                        Get.to(() => UserAddressScreen());
                       }),
                   SettingMenuTile(
                       title: TTexts.uploadDummyData,
                       subTitle: TTexts.uploadDummyDataSubtitle,
                       leadingIcon: Iconsax.document_upload,
-                      onTap: () {}),
+                      onTap: () {
+                        Get.to(() => DummyDataScreen());
+                      }),
                   const SizedBox(height: TSizes.spaceBtnItems),
                   SeactionHeading(title: "${TTexts.settings} ${TTexts.app}"),
                   const SizedBox(height: TSizes.spaceBtnItems),

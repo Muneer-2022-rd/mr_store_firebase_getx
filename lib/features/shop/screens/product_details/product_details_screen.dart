@@ -1,6 +1,6 @@
 import 'package:mr_store_getx_firebase/common/widgets/seaction_heading.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
-import 'package:mr_store_getx_firebase/core/constants/routes.dart';
+
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
@@ -12,6 +12,7 @@ import 'package:mr_store_getx_firebase/features/shop/screens/product_details/wid
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:mr_store_getx_firebase/features/shop/screens/product_reviews/product_reviews_screen.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
@@ -71,7 +72,7 @@ class ProductDetailsScreen extends StatelessWidget {
                         showActionButton: false,
                       ),
                       IconButton(
-                        onPressed: () => Get.toNamed(AppRoute.productReviews),
+                        onPressed: () => Get.to(() => ProductReviewsScreen()),
                         icon: Icon(
                           textDirection == TextDirection.rtl
                               ? Iconsax.arrow_left_2

@@ -61,6 +61,8 @@ flutter:
     - assets/images/promo/
     - assets/images/sub_categories/
     - assets/images/lotties/
+    - assets/images/categories/sub_categories/
+    - assets/images/categories/
     
   fonts:
     - family: Poppins

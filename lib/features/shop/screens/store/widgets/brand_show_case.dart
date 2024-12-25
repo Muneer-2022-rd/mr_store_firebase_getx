@@ -2,9 +2,10 @@ import 'package:get/get.dart';
 import 'package:mr_store_getx_firebase/common/widgets/rounded_container.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/image.dart';
-import 'package:mr_store_getx_firebase/core/constants/routes.dart';
+
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
+import 'package:mr_store_getx_firebase/features/shop/screens/brand/brand_products_screen.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/store/widgets/brand_card.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +33,7 @@ class BrandShowCase extends StatelessWidget {
           BrandCard(
             showBorder: false,
             onTap: () {
-              Get.toNamed(AppRoute.brandProducts);
+              Get.to(() => BrandProductsScreen());
             },
           ),
           SizedBox(height: TSizes.spaceBtnItems),

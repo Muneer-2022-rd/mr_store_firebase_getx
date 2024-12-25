@@ -85,12 +85,9 @@ class UserRepository extends GetxController {
     }
   }
 
-    Future<void> removeUserRecord(String userId) async {
+  Future<void> removeUserRecord(String userId) async {
     try {
-      await _db
-          .collection(TCollections.users)
-          .doc(userId)
-          .delete();
+      await _db.collection(TCollections.users).doc(userId).delete();
     } on FirebaseException catch (e) {
       throw TFirebaseException(code: e.code).message;
     } on FormatException catch (e) {
@@ -101,8 +98,8 @@ class UserRepository extends GetxController {
       throw 'Something went wrong. Please try again';
     }
   }
-  
-    Future<String> uploadImageFile(String path, XFile image) async {
+
+  Future<String> uploadImageFile(String path, XFile image) async {
     try {
       final ref = FirebaseStorage.instance.ref(path).child(image.name);
       await ref.putFile(File(image.path));
@@ -119,4 +116,28 @@ class UserRepository extends GetxController {
     }
   }
 
+  Future<bool> isFieldFound(
+    String collection,
+    String fieldKey,
+    String fieldValue,
+  ) async {
+    try {
+      final querySnapshot = await _db
+          .collection(collection)
+          .where(fieldKey, isEqualTo: fieldValue)
+          .get();
+
+      if (querySnapshot.docs.isNotEmpty) return true;
+
+      return false;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on FormatException catch (e) {
+      throw TFormatException(code: e.toString());
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 }

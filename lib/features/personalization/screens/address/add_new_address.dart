@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 
-class AddNewAddress extends StatelessWidget {
-  const AddNewAddress({super.key});
+class AddNewAddressScreen extends StatelessWidget {
+  const AddNewAddressScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

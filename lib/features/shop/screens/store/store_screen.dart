@@ -2,10 +2,13 @@ import 'package:get/get.dart';
 import 'package:mr_store_getx_firebase/common/widgets/custom_app_bar.dart';
 import 'package:mr_store_getx_firebase/common/widgets/custom_tab_bar.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
-import 'package:mr_store_getx_firebase/core/constants/routes.dart';
+
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
+import 'package:mr_store_getx_firebase/features/shop/controllers/categories_controller.dart';
+import 'package:mr_store_getx_firebase/features/shop/screens/brand/all_brands_screen.dart';
+import 'package:mr_store_getx_firebase/features/shop/screens/cart/cart_screen.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/cart_counter_icon.dart';
 import 'package:mr_store_getx_firebase/common/widgets/seaction_heading.dart';
 import 'package:mr_store_getx_firebase/common/widgets/search_container.dart';
@@ -18,6 +21,7 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categories = CategoriesController.instance.featuredCategories;
     return DefaultTabController(
       length: 5,
       child: Scaffold(
@@ -29,7 +33,7 @@ class StoreScreen extends StatelessWidget {
           actions: [
             CartCounterIcon(
               onPressed: () {
-                Get.toNamed(AppRoute.cart);
+                Get.to(() => CartScreen());
               },
             )
           ],
@@ -63,7 +67,7 @@ class StoreScreen extends StatelessWidget {
                         title: TTexts.storeFeaturedBrandsTitle,
                         buttonTitle: TTexts.homeShowAllButton,
                         onPressed: () {
-                          Get.toNamed(AppRoute.allBrands);
+                          Get.to(() => AllBrandsScreen());
                         },
                       ),
                       SizedBox(height: TSizes.spaceBtnItems / 1.5),
@@ -72,25 +76,15 @@ class StoreScreen extends StatelessWidget {
                   ),
                 ),
                 bottom: CustomTabBar(
-                  tabs: [
-                    Tab(child: Text(TTexts.storeSports)),
-                    Tab(child: Text(TTexts.storeCloths)),
-                    Tab(child: Text(TTexts.storeCosmotics)),
-                    Tab(child: Text(TTexts.storeElectronics)),
-                    Tab(child: Text(TTexts.storeFurnitures)),
-                  ],
+                  tabs: categories
+                      .map((category) => Tab(child: Text(category.name!)))
+                      .toList(),
                 ),
               ),
             ];
           },
-          body: const TabBarView(
-            children: [
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-            ],
+          body: TabBarView(
+            children: categories.map((category) => CategoryTab()).toList(),
           ),
         ),
       ),

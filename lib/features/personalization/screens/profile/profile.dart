@@ -2,11 +2,16 @@ import 'package:get/get.dart';
 import 'package:mr_store_getx_firebase/common/widgets/custom_app_bar.dart';
 import 'package:mr_store_getx_firebase/common/widgets/seaction_heading.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
-import 'package:mr_store_getx_firebase/core/constants/routes.dart';
+
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
 import 'package:mr_store_getx_firebase/data/repositories/authentication/authentication_repository.dart';
 import 'package:mr_store_getx_firebase/features/personalization/controllers/user_controller.dart';
+import 'package:mr_store_getx_firebase/features/personalization/screens/profile/change_birthdate.dart';
+import 'package:mr_store_getx_firebase/features/personalization/screens/profile/change_gender.dart';
+import 'package:mr_store_getx_firebase/features/personalization/screens/profile/change_name.dart';
+import 'package:mr_store_getx_firebase/features/personalization/screens/profile/change_phone.dart';
+import 'package:mr_store_getx_firebase/features/personalization/screens/profile/change_username.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/profile/widgets/account_type_card.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/profile/widgets/custom_action_button.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/profile/widgets/profile_image.dart';
@@ -65,27 +70,27 @@ class ProfileScreen extends StatelessWidget {
               ProfileMenu(
                 title: 'Username',
                 value: controller.user.value.userName!,
-                onPressed: () => Get.toNamed(AppRoute.changeUsername),
+                onPressed: () => Get.to(() => ChangeUserNameScreen()),
               ),
               ProfileMenu(
                 title: 'Name',
                 value: controller.user.value.fullName,
-                onPressed: () => Get.toNamed(AppRoute.changeName),
+                onPressed: () => Get.to(() => ChangeNameScreen()),
               ),
               ProfileMenu(
                 title: 'Phone Number',
                 value: controller.user.value.phoneNumber ?? '',
-                onPressed: () => Get.toNamed(AppRoute.changePhoneNumber),
+                onPressed: () => Get.to(() => ChangePhoneScreen()),
               ),
               ProfileMenu(
                 title: 'Gender',
                 value: controller.user.value.gender ?? '',
-                onPressed: () => Get.toNamed(AppRoute.changeGender),
+                onPressed: () => Get.to(() => ChangeGenderScreen()),
               ),
               ProfileMenu(
                 title: 'Date Of Birth',
                 value: controller.user.value.birthDate ?? '',
-                onPressed: () => Get.toNamed(AppRoute.changeBirthDate),
+                onPressed: () => Get.to(() => ChangeBirthDateScreen()),
               ),
               SizedBox(height: TSizes.spaceBtnItems / 2),
               const Divider(),
