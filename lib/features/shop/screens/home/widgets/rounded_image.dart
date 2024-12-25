@@ -56,6 +56,7 @@ class RoundedImage extends StatelessWidget {
               ? CachedNetworkImage(
                   imageUrl: url,
                   fit: fit,
+                  
                   placeholder: (context, url) => Shimmer.fromColors(
                     baseColor: dark ? Colors.grey[850]! : Colors.grey[300]!,
                     highlightColor:

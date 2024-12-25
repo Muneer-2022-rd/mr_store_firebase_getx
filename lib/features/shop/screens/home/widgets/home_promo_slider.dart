@@ -23,10 +23,12 @@ class BannerSlider extends StatelessWidget {
           items: controller.featuredBanners
               .map(
                 (banner) => RoundedImage(
-                    width: double.infinity,
-                    url: banner.image!,
-                    applyRadius: true,
-                    fit: BoxFit.cover),
+                  width: double.infinity,
+                  url: banner.image!,
+                  applyRadius: true,
+                  fit: BoxFit.cover,
+                  networkUrl: true,
+                ),
               )
               .toList(),
           options: CarouselOptions(

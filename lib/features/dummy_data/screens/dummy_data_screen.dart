@@ -64,7 +64,7 @@ class DummyDataScreen extends StatelessWidget {
 class UploadDummyDataModel {
   final String title;
   final IconData icon;
-  final VoidCallback onTap;
+  final Function onTap;
   UploadDummyDataModel({
     required this.title,
     required this.icon,
