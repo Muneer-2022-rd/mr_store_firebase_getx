@@ -2,7 +2,6 @@ import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import '../constants/colors.dart';
@@ -171,13 +170,6 @@ class THelperFunctions {
 
   static double screenWidth() {
     return MediaQuery.of(Get.context!).size.width;
-  }
-
-  static String getFormattedDate(
-    DateTime date, {
-    String format = 'dd MMM yyyy',
-  }) {
-    return DateFormat(format).format(date);
   }
 
   static List<T> removeDuplicates<T>(List<T> list) {

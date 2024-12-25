@@ -5,14 +5,14 @@ class BannerModel {
   String? search;
   String? image;
   String? dateReleased;
-  bool? isFeatured;
+  bool? isActive;
 
   BannerModel({
     this.id,
     this.search,
     this.image,
     this.dateReleased,
-    this.isFeatured,
+    this.isActive,
   });
 
   BannerModel.empty()
@@ -20,14 +20,14 @@ class BannerModel {
         search = '',
         image = '',
         dateReleased = '',
-        isFeatured = false;
+        isActive = false;
 
   BannerModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     search = json['search'];
     image = json['image'];
     dateReleased = json['dateReleased'];
-    isFeatured = json['isFeatured'];
+    isActive = json['isActive'];
   }
   factory BannerModel.fromSnapshot(
     DocumentSnapshot<Map<String, dynamic>> document,
@@ -39,7 +39,7 @@ class BannerModel {
         search: data['search'],
         image: data['image'],
         dateReleased: data['dateReleased'],
-        isFeatured: data['isFeatured'],
+        isActive: data['isActive'],
       );
     } else {
       return BannerModel.empty();
@@ -51,7 +51,7 @@ class BannerModel {
     data['search'] = search;
     data['image'] = image;
     data['dateReleased'] = dateReleased;
-    data['isFeatured'] = isFeatured;
+    data['isActive'] = isActive;
     return data;
   }
 }

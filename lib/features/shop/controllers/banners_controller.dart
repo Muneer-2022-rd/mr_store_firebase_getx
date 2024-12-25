@@ -35,7 +35,7 @@ class BannersController extends GetxController {
       final banners = await bannersRepository.getBanners();
       allBanners.assignAll(banners);
       featuredBanners.assignAll(
-          banners.where((category) => category.isFeatured!).take(3).toList());
+          banners.where((category) => category.isActive!).take(3).toList());
       isLoading.value = false;
     } catch (e) {
       TLoader.errorStackBar(title: 'Oh Snap!', message: e.toString());

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import 'package:mr_store_getx_firebase/common/widgets/custom_app_bar.dart';
+import 'package:mr_store_getx_firebase/core/constants/collections.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/features/dummy_data/controllers/dummy_data_controller.dart';
 import 'package:mr_store_getx_firebase/features/dummy_data/screens/widgets/dummy_data_button.dart';
@@ -16,12 +17,12 @@ class DummyDataScreen extends StatelessWidget {
     final controller = Get.put(UploadDummyDataController());
     final List<UploadDummyDataModel> dataList = [
       UploadDummyDataModel(
-        title: 'Categories',
+        title: TCollections.categories,
         icon: Iconsax.category,
         onTap: () => controller.uploadCategoriesDummyData(),
       ),
       UploadDummyDataModel(
-        title: 'Banners',
+        title: TCollections.banners,
         icon: Iconsax.gallery,
         onTap: () => controller.uploadBannersDummyData(),
       ),

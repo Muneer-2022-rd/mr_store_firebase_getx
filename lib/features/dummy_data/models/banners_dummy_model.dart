@@ -6,15 +6,15 @@ class BannersDummyData {
     BannerModel(
       id: '001',
       image: 'assets/images/banners/clothes.jpg',
-      isFeatured: true,
-      search: 'clothes',
+      isActive: true,
+      search: '/clothes',
       dateReleased: TFormatter.formatDate(DateTime.now()),
     ),
     BannerModel(
       id: '002',
       image: 'assets/images/banners/devices.jpg',
-      isFeatured: true,
-      search: 'devices',
+      isActive: true,
+      search: '/devices',
       dateReleased: TFormatter.formatDate(DateTime.now()),
     ),
   ];
