@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:mr_store_getx_firebase/controllers/network_manager.dart';
 import 'package:mr_store_getx_firebase/core/popups/loader.dart';
-import 'package:mr_store_getx_firebase/data/repositories/categories/categories_repository.dart';
+import 'package:mr_store_getx_firebase/data/repositories/category/categories_repository.dart';
 import 'package:mr_store_getx_firebase/features/shop/models/category_model.dart';
 
 class CategoriesController extends GetxController {
@@ -27,7 +27,7 @@ class CategoriesController extends GetxController {
         isLoading.value = false;
         return;
       }
-      final categories = await categoriesRepository.getAllcategories();
+      final categories = await categoriesRepository.getAllCategories();
       allCategories.assignAll(categories);
       featuredCategories.assignAll(categories
           .where(
@@ -38,6 +38,8 @@ class CategoriesController extends GetxController {
     } catch (e) {
       TLoader.errorStackBar(title: 'Oh Snap!', message: e.toString());
       isLoading.value = false;
-    } finally {}
+    } finally {
+      isLoading.value = false;
+    }
   }
 }

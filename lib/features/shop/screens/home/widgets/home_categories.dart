@@ -17,36 +17,37 @@ class HomeCategories extends StatelessWidget {
     bool isRtl = Directionality.of(context) == TextDirection.rtl;
     final controller = Get.put(CategoriesController());
     return Obx(() {
-    if (controller.isLoading.value) {
-    return const CategoriesListShimmer();
-    } else {
-    return SizedBox(
-      height: 80,
-      child: ListView.builder(
-        itemCount: controller.featuredCategories.length,
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        padding: isRtl
-            ? EdgeInsets.zero
-            : const EdgeInsets.only(left: TSizes.defaultSpace),
-        itemBuilder: (context, index) => Padding(
-          padding: EdgeInsets.only(
-            left: isRtl
-                ? (index == controller.featuredCategories.length - 1
-                    ? TSizes.defaultSpace
-                    : 0)
-                : 0,
+      if (controller.isLoading.value) {
+        return const CategoriesListShimmer();
+      } else {
+        return SizedBox(
+          height: 80,
+          child: ListView.builder(
+            itemCount: controller.featuredCategories.length,
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            padding: isRtl
+                ? EdgeInsets.zero
+                : const EdgeInsets.only(left: TSizes.defaultSpace),
+            itemBuilder: (context, index) => Padding(
+              padding: EdgeInsets.only(
+                left: isRtl
+                    ? (index == controller.featuredCategories.length - 1
+                        ? TSizes.defaultSpace
+                        : 0)
+                    : 0,
+              ),
+              child: VerticalImageText(
+                onTap: () => Get.to(() => SubCategoriesScreen(
+                    category: controller.featuredCategories[index])),
+                imageTitle: controller.featuredCategories[index].name!,
+                image: controller.featuredCategories[index].image!,
+                textColor: TColors.white,
+              ),
+            ),
           ),
-          child: VerticalImageText(
-            onTap: () => Get.to(SubCategoriesScreen()),
-            imageTitle: controller.featuredCategories[index].name!,
-            image: controller.featuredCategories[index].image!,
-            textColor: TColors.white,
-          ),
-        ),
-      ),
-    );
-    }
+        );
+      }
     });
   }
 }

@@ -38,6 +38,8 @@ dependencies:
   connectivity_plus: ^6.1.1
   google_sign_in: ^6.2.2
   intl_phone_field: ^3.2.0
+  firebase_crashlytics: ^4.2.0
+  firebase_analytics: ^11.3.6
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +65,7 @@ flutter:
     - assets/images/lotties/
     - assets/images/categories/sub_categories/
     - assets/images/categories/
+    - assets/images/banners/
     
   fonts:
     - family: Poppins

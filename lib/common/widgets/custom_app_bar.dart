@@ -9,9 +9,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showBackArrow = false,
     this.leadingIcon,
     this.actions,
-    this.leadingOnPressed,
+    this.leadingOnPressed, this.backgroundColor,
   });
   final Widget? title;
+  final Color? backgroundColor;
   final bool showBackArrow;
   final Widget? leadingIcon;
   final List<Widget>? actions;
@@ -36,6 +37,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 : null,
         title: title,
         actions: actions,
+        backgroundColor: backgroundColor,
       ),
     );
   }

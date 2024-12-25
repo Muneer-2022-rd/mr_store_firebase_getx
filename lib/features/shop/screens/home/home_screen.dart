@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  const HomePromoSlider(),
+                  const BannerSlider(),
                   const SizedBox(height: TSizes.spaceBtnSections),
                   SeactionHeading(
                     showActionButton: true,
