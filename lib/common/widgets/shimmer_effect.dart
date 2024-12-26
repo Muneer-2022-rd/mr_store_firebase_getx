@@ -8,11 +8,11 @@ import '../../../../../core/constants/colors.dart';
 class ShimmerEffect extends StatelessWidget {
   const ShimmerEffect(
       {super.key,
-      required this.height,
+       this.height,
       required this.width,
       this.radius = 15,
       this.color});
-  final double height;
+  final double? height;
   final double width;
   final double radius;
   final Color? color;

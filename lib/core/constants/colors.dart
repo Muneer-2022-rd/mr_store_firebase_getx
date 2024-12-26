@@ -46,9 +46,9 @@ class TColors {
     begin: Alignment(0.0, 0.0),
     end: Alignment(0.707, -0.707),
     colors: [
-      Color(0xffFD2400),
-      Color(0xfffa7354),
-      Color(0xffFF8C66),
+      Color(0xFF007C39),
+      Color(0xFF00A04D),
+      Color(0xFF33B36A),
     ],
   );
   // text colors

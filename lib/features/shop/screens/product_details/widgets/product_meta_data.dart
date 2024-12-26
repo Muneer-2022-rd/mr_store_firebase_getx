@@ -24,7 +24,7 @@ class ProductMetaData extends StatelessWidget {
           children: [
             RoundedContainer(
               raduis: TSizes.sm,
-              backgroundColor: TColors.secondary.withValues(alpha: 0.8),
+              backgroundColor: Colors.amberAccent.withValues(alpha: 0.8),
               padding: const EdgeInsets.symmetric(
                   horizontal: TSizes.sm, vertical: TSizes.xs),
               child: Text('25%',

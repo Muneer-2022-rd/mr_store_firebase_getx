@@ -10,6 +10,7 @@ import 'package:mr_store_getx_firebase/core/exceptions/format_exception.dart';
 import 'package:mr_store_getx_firebase/core/exceptions/platform_exception.dart';
 import 'package:mr_store_getx_firebase/features/dummy_data/models/banners_dummy_model.dart';
 import 'package:mr_store_getx_firebase/features/dummy_data/models/categories_dummy_model.dart';
+import 'package:mr_store_getx_firebase/features/dummy_data/models/products_dummy_model.dart';
 
 class UploadDummyDataRepository extends GetxController {
   static UploadDummyDataRepository get instance => Get.find();
@@ -58,6 +59,53 @@ class UploadDummyDataRepository extends GetxController {
             .collection(TCollections.banners)
             .doc(banner.id)
             .set(banner.toJson());
+      }
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on FormatException catch (e) {
+      throw TFormatException(code: e.toString());
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      print(e);
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  Future<void> uploadDummyProductsData() async {
+    final products = ProductsDummyData.products;
+    try {
+      for (var product in products) {
+        // Upload thumbnail
+        if (product.thumbnail.isNotEmpty) {
+          final imageFile = await getImageDataFromAssets(product.thumbnail);
+          final imageUrl = await uploadImageUint8ListData(
+            "${TCollections.products}/thumbnails/",
+            imageFile,
+            product.thumbnail.split('/').last,
+          );
+          product.thumbnail = imageUrl;
+        }
+
+        // Upload additional images
+        if (product.images != null && product.images!.isNotEmpty) {
+          final uploadedImages = <String>[];
+          for (var imagePath in product.images!) {
+            final additionalImageFile = await getImageDataFromAssets(imagePath);
+            final additionalImageUrl = await uploadImageUint8ListData(
+              "${TCollections.products}/images/",
+              additionalImageFile,
+              imagePath.split('/').last,
+            );
+            uploadedImages.add(additionalImageUrl);
+          }
+          product.images = uploadedImages;
+        }
+
+        await _db
+            .collection(TCollections.products)
+            .doc(product.id)
+            .set(product.toJson());
       }
     } on FirebaseException catch (e) {
       throw TFirebaseException(code: e.code).message;

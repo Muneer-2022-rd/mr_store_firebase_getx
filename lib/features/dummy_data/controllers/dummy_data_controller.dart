@@ -25,6 +25,7 @@ class UploadDummyDataController extends GetxController {
       isLoading.value = false;
     }
   }
+
   uploadBannersDummyData() async {
     try {
       isLoading.value = true;
@@ -35,6 +36,25 @@ class UploadDummyDataController extends GetxController {
         return;
       }
       await uploadDummyDataRepository.uploadDummyBannersData();
+      isLoading.value = false;
+    } catch (e) {
+      TLoader.errorStackBar(title: 'Oh Snap!', message: e.toString());
+      isLoading.value = false;
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  uploadProductsDummyData() async {
+    try {
+      isLoading.value = true;
+
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        isLoading.value = false;
+        return;
+      }
+      await uploadDummyDataRepository.uploadDummyProductsData();
       isLoading.value = false;
     } catch (e) {
       TLoader.errorStackBar(title: 'Oh Snap!', message: e.toString());

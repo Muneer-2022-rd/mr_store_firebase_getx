@@ -1,4 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:mr_store_getx_firebase/common/widgets/rounded_container.dart';
+import 'package:mr_store_getx_firebase/common/widgets/shimmer_effect.dart';
 import 'package:mr_store_getx_firebase/features/shop/controllers/banners_controller.dart';
 import 'package:mr_store_getx_firebase/common/widgets/circular_container.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
@@ -19,28 +21,37 @@ class BannerSlider extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        CarouselSlider(
-          items: controller.featuredBanners
-              .map(
-                (banner) => RoundedImage(
-                  width: double.infinity,
-                  url: banner.image!,
-                  applyRadius: true,
-                  fit: BoxFit.cover,
-                  networkUrl: true,
-                ),
-              )
-              .toList(),
-          options: CarouselOptions(
-            autoPlayCurve: Curves.bounceInOut,
-            scrollPhysics: BouncingScrollPhysics(),
-            enableInfiniteScroll: true,
-            pageSnapping: true,
-            viewportFraction: 1,
-            onPageChanged: (index, reason) => controller.updateIndex(index),
-          ),
-          carouselController: CarouselSliderController(),
-        ),
+        Obx(() {
+          if (controller.isLoading.value) {
+            return RoundedContainer(
+              child: ShimmerEffect(width: double.infinity, height: 190),
+            );
+          } else {
+            return CarouselSlider(
+              items: controller.featuredBanners
+                  .map(
+                    (banner) => RoundedImage(
+                      width: double.infinity,
+                      url: banner.image!,
+                      applyRadius: true,
+                      fit: BoxFit.cover,
+                      networkUrl: true,
+                      onPressed: () => Get.toNamed(banner.search!),
+                    ),
+                  )
+                  .toList(),
+              options: CarouselOptions(
+                autoPlayCurve: Curves.bounceInOut,
+                scrollPhysics: BouncingScrollPhysics(),
+                enableInfiniteScroll: true,
+                pageSnapping: true,
+                viewportFraction: 1,
+                onPageChanged: (index, reason) => controller.updateIndex(index),
+              ),
+              carouselController: CarouselSliderController(),
+            );
+          }
+        }),
         const SizedBox(height: TSizes.spaceBtnItems),
         Obx(
           () => Row(
