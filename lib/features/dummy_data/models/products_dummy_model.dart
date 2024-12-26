@@ -6,6 +6,7 @@ import 'package:mr_store_getx_firebase/features/shop/models/product_model.dart';
 class ProductsDummyData {
   static final List<ProductModel> products = [
     ProductModel(
+      sku: 'TS',
       id: 'cl001',
       title: 'T-Shirt',
       stock: 50,
@@ -65,7 +66,7 @@ class ProductsDummyData {
         ),
         ProductVariationsModel(
           id: 'var004',
-          sku: 'TS-RED-XL',
+          sku: 'TS-WHITE-XL',
           image: 'assets/images/products/white_t-shirt.png',
           price: 20.00,
           salePrice: 15.00,
@@ -75,6 +76,7 @@ class ProductsDummyData {
       ],
     ),
     ProductModel(
+      sku: 'JN',
       id: 'cl002',
       title: 'Jeans',
       stock: 40,
@@ -123,6 +125,7 @@ class ProductsDummyData {
       ],
     ),
     ProductModel(
+      sku: 'Ja',
       id: 'cl003',
       title: 'Jacket',
       stock: 30,
@@ -146,6 +149,7 @@ class ProductsDummyData {
       productVariations: [],
     ),
     ProductModel(
+      sku: 'Ho',
       id: 'cl004',
       title: 'Hoodie',
       stock: 5,
