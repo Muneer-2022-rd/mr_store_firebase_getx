@@ -40,7 +40,7 @@ class ProductDetailsScreen extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   const RatingAndShareWidget(),
-                  const ProductMetaData(),
+                  ProductMetaData(product: product),
                   const ProductAttributes(),
                   const SizedBox(height: TSizes.spaceBtnSections),
                   SizedBox(
@@ -57,7 +57,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: TSizes.spaceBtnItems),
                   ReadMoreText(
-                    'This premium T-shirt is crafted from 100% organic cotton, ensuring maximum comfort and durability. Perfect for casual outings, it features a sleek design with a modern fit. The breathable fabric keeps you cool and comfortable all day long. Available in multiple colors to match your style. Ideal for everyday wear or gifting! ',
+                    product.description!,
                     trimLines: 2,
                     colorClickableText: TColors.getPrimaryColor(context),
                     trimMode: TrimMode.Line,

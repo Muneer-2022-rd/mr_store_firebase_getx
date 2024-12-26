@@ -1,5 +1,6 @@
 import 'package:mr_store_getx_firebase/common/styles/shadow_style.dart';
 import 'package:mr_store_getx_firebase/common/widgets/circular_icon.dart';
+import 'package:mr_store_getx_firebase/core/constants/enum.dart';
 import 'package:mr_store_getx_firebase/features/shop/controllers/products_controller.dart';
 import 'package:mr_store_getx_firebase/features/shop/models/product_model.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/product_price_text.dart';
@@ -22,6 +23,8 @@ class ProductCardVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = ProductsController.instance;
+    final salePercentage =
+        controller.calculatesalePercentage(product.price, product.salePrice);
     final dark = THelperFunctions.isDarkMode(context);
     final textDirection = Directionality.of(context);
     return GestureDetector(
@@ -37,6 +40,7 @@ class ProductCardVertical extends StatelessWidget {
           children: [
             Expanded(
               child: RoundedContainer(
+                padding: EdgeInsets.zero,
                 backgroundColor: dark
                     ? TColors.darkGrey
                     : TColors.grey.withValues(alpha: 0.5),
@@ -46,7 +50,8 @@ class ProductCardVertical extends StatelessWidget {
                       width: double.infinity,
                       url: product.thumbnail,
                       applyRadius: true,
-                      borderRadius: 25,
+                      borderRadius: TSizes.cardRadiusLg,
+                      networkUrl: true,
                     ),
                     Positioned(
                       top: 12,
@@ -59,7 +64,7 @@ class ProductCardVertical extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: TSizes.sm, vertical: TSizes.xs),
                         child: Text(
-                          '25%',
+                          '$salePercentage%',
                           style: Theme.of(context)
                               .textTheme
                               .labelLarge!
@@ -119,10 +124,33 @@ class ProductCardVertical extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ProductPriceText(
-                          price: controller.getProductPrice(product),
-                          isLarge: true,
-                          currencySign: '\$',
+                        Flexible(
+                          child: Column(
+                            children: [
+                              if (product.productType ==
+                                      ProductType.single.toString() &&
+                                  product.salePrice > 0.0)
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: TSizes.sm),
+                                  child: Text(
+                                    product.price.toString(),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelMedium!
+                                        .apply(
+                                            decoration:
+                                                TextDecoration.lineThrough),
+                                  ),
+                                ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: TSizes.sm),
+                                child: ProductPriceText(
+                                  price: controller.getProductPrice(product),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         Container(
                           decoration: BoxDecoration(

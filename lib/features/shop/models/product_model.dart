@@ -16,8 +16,8 @@ class ProductModel {
   final String? description;
   List<String>? images;
   final String productType;
-  final List<ProductAttributeModel>? productAttribute;
-  final List<ProductVariationModel>? productVariation;
+  final List<ProductAttributesModel>? productAttributes;
+  final List<ProductVariationsModel>? productVariations;
   ProductModel({
     required this.id,
     required this.title,
@@ -33,8 +33,8 @@ class ProductModel {
     this.categoryId,
     this.description,
     required this.productType,
-    this.productAttribute,
-    this.productVariation,
+    this.productAttributes,
+    this.productVariations,
   });
   static ProductModel empty() => ProductModel(
         id: '',
@@ -61,11 +61,11 @@ class ProductModel {
       'description': description,
       'images': images ?? [],
       'productType': productType,
-      'productAttribute': productAttribute != null
-          ? productAttribute!.map((x) => x.toJson()).toList()
+      'productAttributes': productAttributes != null
+          ? productAttributes!.map((x) => x.toJson()).toList()
           : [],
-      'productVariation': productVariation != null
-          ? productVariation!.map((x) => x.toJson()).toList()
+      'productVariations': productVariations != null
+          ? productVariations!.map((x) => x.toJson()).toList()
           : [],
     };
   }
@@ -88,19 +88,19 @@ class ProductModel {
       productType: data['productType'] ?? '',
       brand: BrandModel.fromJson(data['brand']),
       images: data['images'] != null ? List<String>.from(data['images']) : [],
-      productAttribute: (data['productAttribute'] as List<dynamic>)
-          .map((productAttribute) =>
-              ProductAttributeModel.fromJson(productAttribute))
+      productAttributes: (data['productAttributes'] as List<dynamic>)
+          .map((productAttributes) =>
+              ProductAttributesModel.fromJson(productAttributes))
           .toList(),
-      productVariation: (data['productVariation'] as List<dynamic>)
-          .map((productVariation) =>
-              ProductVariationModel.fromJson(productVariation))
+      productVariations: (data['productVariations'] as List<dynamic>)
+          .map((productVariations) =>
+              ProductVariationsModel.fromJson(productVariations))
           .toList(),
     );
   }
 }
 
-class ProductVariationModel {
+class ProductVariationsModel {
   final String id;
   String sku;
   String image;
@@ -109,7 +109,7 @@ class ProductVariationModel {
   double salePrice;
   int stock;
   Map<String, String> attributeValues;
-  ProductVariationModel({
+  ProductVariationsModel({
     required this.id,
     this.sku = '',
     this.image = '',
@@ -119,8 +119,8 @@ class ProductVariationModel {
     this.stock = 0,
     required this.attributeValues,
   });
-  static ProductVariationModel empty() =>
-      ProductVariationModel(id: '', attributeValues: {});
+  static ProductVariationsModel empty() =>
+      ProductVariationsModel(id: '', attributeValues: {});
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'id': id,
@@ -134,10 +134,10 @@ class ProductVariationModel {
     };
   }
 
-  factory ProductVariationModel.fromJson(Map<String, dynamic> document) {
+  factory ProductVariationsModel.fromJson(Map<String, dynamic> document) {
     final data = document;
-    if (data.isEmpty) return ProductVariationModel.empty();
-    return ProductVariationModel(
+    if (data.isEmpty) return ProductVariationsModel.empty();
+    return ProductVariationsModel(
       id: data['id'] ?? '',
       price: double.parse((data['price'] ?? 0.0).toString()),
       sku: data['sku'] ?? '',
@@ -149,10 +149,10 @@ class ProductVariationModel {
   }
 }
 
-class ProductAttributeModel {
+class ProductAttributesModel {
   final String? name;
   final List<String>? values;
-  ProductAttributeModel({
+  ProductAttributesModel({
     this.name,
     this.values,
   });
@@ -164,10 +164,10 @@ class ProductAttributeModel {
     };
   }
 
-  factory ProductAttributeModel.fromJson(Map<String, dynamic> document) {
+  factory ProductAttributesModel.fromJson(Map<String, dynamic> document) {
     final data = document;
-    if (data.isEmpty) return ProductAttributeModel();
-    return ProductAttributeModel(
+    if (data.isEmpty) return ProductAttributesModel();
+    return ProductAttributesModel(
       name: data.containsKey('name') ? data['name'] : '',
       values: List<String>.from(data['values']),
     );

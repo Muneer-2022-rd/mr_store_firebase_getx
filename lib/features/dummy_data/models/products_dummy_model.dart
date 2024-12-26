@@ -28,14 +28,14 @@ class ProductsDummyData {
         'assets/images/products/green_t-shirt.png',
         'assets/images/products/blue_t-shirt.png',
       ],
-      productType: 'Variation',
-      productAttribute: [
-        ProductAttributeModel(name: 'Size', values: ['S', 'M', 'L', 'XL']),
-        ProductAttributeModel(
+      productType: 'variable',
+      productAttributes: [
+        ProductAttributesModel(name: 'Size', values: ['S', 'M', 'L', 'XL']),
+        ProductAttributesModel(
             name: 'Color', values: ['Red', 'Blue', 'Green', 'White']),
       ],
-      productVariation: [
-        ProductVariationModel(
+      productVariations: [
+        ProductVariationsModel(
           id: 'var001',
           sku: 'TS-RED-S',
           image: 'assets/images/products/red_t-shirt.png',
@@ -44,7 +44,7 @@ class ProductsDummyData {
           stock: 10,
           attributeValues: {'Color': 'Red', 'Size': 'S'},
         ),
-        ProductVariationModel(
+        ProductVariationsModel(
           id: 'var002',
           sku: 'TS-BLUE-M',
           image: 'assets/images/products/blue_t-shirt.png',
@@ -53,7 +53,7 @@ class ProductsDummyData {
           stock: 12,
           attributeValues: {'Color': 'Blue', 'Size': 'M'},
         ),
-        ProductVariationModel(
+        ProductVariationsModel(
           id: 'var003',
           sku: 'TS-GREEN-L',
           image: 'assets/images/products/green_t-shirt.png',
@@ -62,7 +62,7 @@ class ProductsDummyData {
           stock: 15,
           attributeValues: {'Color': 'Green', 'Size': 'L'},
         ),
-        ProductVariationModel(
+        ProductVariationsModel(
           id: 'var004',
           sku: 'TS-RED-XL',
           image: 'assets/images/products/white_t-shirt.png',
@@ -95,13 +95,13 @@ class ProductsDummyData {
         'assets/images/products/black_jeans.png',
         'assets/images/products/blue_jeans.png',
       ],
-      productType: 'Variation',
-      productAttribute: [
-        ProductAttributeModel(name: 'Size', values: ['34', '36']),
-        ProductAttributeModel(name: 'Color', values: ['Black', 'Blue']),
+      productType: 'variable',
+      productAttributes: [
+        ProductAttributesModel(name: 'Size', values: ['34', '36']),
+        ProductAttributesModel(name: 'Color', values: ['Black', 'Blue']),
       ],
-      productVariation: [
-        ProductVariationModel(
+      productVariations: [
+        ProductVariationsModel(
           id: 'var005',
           sku: 'JN-BLACK-30',
           image: 'assets/images/products/black_jeans.png',
@@ -110,7 +110,7 @@ class ProductsDummyData {
           stock: 8,
           attributeValues: {'Color': 'Black', 'Size': '30'},
         ),
-        ProductVariationModel(
+        ProductVariationsModel(
           id: 'var006',
           sku: 'JN-BLUE-32',
           image: 'assets/images/products/blue_jeans.png',
@@ -140,9 +140,9 @@ class ProductsDummyData {
       date: TFormatter.formatDate(DateTime.now()),
       description: 'Warm and stylish winter jacket.',
       images: [],
-      productType: 'Single',
-      productAttribute: [],
-      productVariation: [],
+      productType: 'single',
+      productAttributes: [],
+      productVariations: [],
     ),
     ProductModel(
       id: 'cl004',
@@ -163,9 +163,9 @@ class ProductsDummyData {
       date: TFormatter.formatDate(DateTime.now()),
       description: 'Cozy hoodie for casual wear.',
       images: [],
-      productType: 'Single',
-      productAttribute: [],
-      productVariation: [],
+      productType: 'single',
+      productAttributes: [],
+      productVariations: [],
     ),
   ];
 }
