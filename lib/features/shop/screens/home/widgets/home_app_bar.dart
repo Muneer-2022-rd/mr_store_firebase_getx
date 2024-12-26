@@ -1,4 +1,4 @@
-import 'package:mr_store_getx_firebase/common/widgets/shimmer_effect.dart';
+import 'package:mr_store_getx_firebase/common/shimmer/shimmer_effect.dart';
 import 'package:mr_store_getx_firebase/features/personalization/controllers/user_controller.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/cart/cart_screen.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/cart_counter_icon.dart';

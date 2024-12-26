@@ -65,6 +65,7 @@ flutter:
     - assets/images/lotties/
     - assets/images/categories/sub_categories/
     - assets/images/categories/
+    - assets/images/brands/
     - assets/images/banners/
     
   fonts:

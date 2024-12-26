@@ -19,7 +19,7 @@ class CartItem extends StatelessWidget {
     return Row(
       children: [
         RoundedImage(
-          url: TImages.productBlue,
+          url: TImages.productThmbnail,
           width: 60,
           height: 60,
           padding: const EdgeInsets.all(TSizes.sm),

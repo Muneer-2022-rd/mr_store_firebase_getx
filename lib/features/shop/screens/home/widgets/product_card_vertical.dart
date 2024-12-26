@@ -1,13 +1,13 @@
 import 'package:mr_store_getx_firebase/common/styles/shadow_style.dart';
 import 'package:mr_store_getx_firebase/common/widgets/circular_icon.dart';
-import 'package:mr_store_getx_firebase/core/constants/image.dart';
+import 'package:mr_store_getx_firebase/features/shop/controllers/products_controller.dart';
+import 'package:mr_store_getx_firebase/features/shop/models/product_model.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/product_price_text.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/product_title_text.dart';
 import 'package:mr_store_getx_firebase/common/widgets/rounded_container.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/rounded_image.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
-import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/product_details/product_details_screen.dart';
 import 'package:flutter/material.dart';
@@ -16,16 +16,16 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProductCardVertical extends StatelessWidget {
-  const ProductCardVertical({super.key});
+  final ProductModel product;
+  const ProductCardVertical({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProductsController.instance;
     final dark = THelperFunctions.isDarkMode(context);
     final textDirection = Directionality.of(context);
     return GestureDetector(
-      onTap: () {
-        Get.to(() => const ProductDetailsScreen());
-      },
+      onTap: () => Get.to(() => ProductDetailsScreen(product: product)),
       child: Container(
         width: 180,
         decoration: BoxDecoration(
@@ -44,7 +44,7 @@ class ProductCardVertical extends StatelessWidget {
                   children: [
                     RoundedImage(
                       width: double.infinity,
-                      url: TImages.productThmbnail,
+                      url: product.thumbnail,
                       applyRadius: true,
                       borderRadius: 25,
                     ),
@@ -95,7 +95,7 @@ class ProductCardVertical extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     ProductTitleText(
-                      title: TTexts.productTitle,
+                      title: product.title,
                       overflow: TextOverflow.ellipsis,
                       maxLine: 2,
                       smallSize: true,
@@ -104,7 +104,7 @@ class ProductCardVertical extends StatelessWidget {
                     const SizedBox(height: TSizes.spaceBtnItems / 2),
                     Row(
                       children: [
-                        Text(TTexts.brandTitle,
+                        Text(product.brand!.name!,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                             style: Theme.of(context).textTheme.labelMedium),
@@ -119,8 +119,8 @@ class ProductCardVertical extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const ProductPriceText(
-                          price: '35.5',
+                        ProductPriceText(
+                          price: controller.getProductPrice(product),
                           isLarge: true,
                           currencySign: '\$',
                         ),

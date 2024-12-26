@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mr_store_getx_firebase/features/shop/models/brand_model.dart';
 
 class ProductModel {
   final String id;
@@ -6,14 +7,14 @@ class ProductModel {
   final String? sku;
   final double price;
   final String title;
-  final DateTime? date;
+  final String? date;
   final double salePrice;
   String thumbnail;
   final bool? isFeatured;
   final String? categoryId;
-  final String? brandId;
+  final BrandModel? brand;
   final String? description;
-   List<String>? images;
+  List<String>? images;
   final String productType;
   final List<ProductAttributeModel>? productAttribute;
   final List<ProductVariationModel>? productVariation;
@@ -24,7 +25,7 @@ class ProductModel {
     required this.price,
     required this.thumbnail,
     this.sku,
-    this.brandId,
+    this.brand,
     this.date,
     this.images,
     this.salePrice = 0.0,
@@ -51,12 +52,12 @@ class ProductModel {
       'sku': sku,
       'price': price,
       'title': title,
-      'date': date?.millisecondsSinceEpoch,
+      'date': date,
       'salePrice': salePrice,
       'thumbnail': thumbnail,
       'isFeatured': isFeatured,
       'categoryId': categoryId,
-      'brandId': brandId,
+      'brand': brand!.toJson(),
       'description': description,
       'images': images ?? [],
       'productType': productType,
@@ -71,6 +72,7 @@ class ProductModel {
 
   factory ProductModel.fromSnapshot(
       DocumentSnapshot<Map<String, dynamic>> document) {
+    if (document.data() == null) return ProductModel.empty();
     final data = document.data()!;
     return ProductModel(
       id: document.id,
@@ -84,7 +86,7 @@ class ProductModel {
       categoryId: data['categoryId'] ?? '',
       description: data['description'] ?? '',
       productType: data['productType'] ?? '',
-      brandId: data['brandId'] ?? '',
+      brand: BrandModel.fromJson(data['brand']),
       images: data['images'] != null ? List<String>.from(data['images']) : [],
       productAttribute: (data['productAttribute'] as List<dynamic>)
           .map((productAttribute) =>

@@ -20,12 +20,12 @@ class ProductImageSlider extends StatelessWidget {
     final dark = THelperFunctions.isDarkMode(context);
     final textDirection = Directionality.of(context);
     final List<String> imagesList = [
-      TImages.productPink,
-      TImages.productBlue,
-      TImages.productGreen,
-      TImages.productOrange,
-      TImages.productYellow,
-      TImages.productPurple,
+      TImages.productThmbnail,
+      TImages.productThmbnail,
+      TImages.productThmbnail,
+      TImages.productThmbnail,
+      TImages.productThmbnail,
+      TImages.productThmbnail,
     ];
     return CurvedEdgesWidget(
       child: Stack(

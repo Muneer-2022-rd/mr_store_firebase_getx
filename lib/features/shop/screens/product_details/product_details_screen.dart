@@ -4,6 +4,7 @@ import 'package:mr_store_getx_firebase/core/constants/colors.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
+import 'package:mr_store_getx_firebase/features/shop/models/product_model.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/product_details/widgets/bottom_add_to_cart.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/product_details/widgets/product_image_slider.dart';
@@ -16,7 +17,8 @@ import 'package:mr_store_getx_firebase/features/shop/screens/product_reviews/pro
 import 'package:readmore/readmore.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
+  final ProductModel product;
+  const ProductDetailsScreen({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {

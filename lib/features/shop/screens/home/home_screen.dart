@@ -1,7 +1,9 @@
+import 'package:mr_store_getx_firebase/common/shimmer/vertical_product_shimmer.dart';
 import 'package:mr_store_getx_firebase/common/widgets/custom_grid_layout.dart';
 import 'package:mr_store_getx_firebase/common/widgets/seaction_heading.dart';
 import 'package:mr_store_getx_firebase/core/extensions/widget_list_spacing.dart';
 import 'package:mr_store_getx_firebase/features/shop/controllers/home_controller.dart';
+import 'package:mr_store_getx_firebase/features/shop/controllers/products_controller.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/home_app_bar.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/home_promo_slider.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/home_categories.dart';
@@ -21,6 +23,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(HomeController());
+    final controller = Get.put(ProductsController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -64,11 +67,20 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                   const SizedBox(height: TSizes.spaceBtnItems),
-                  CustomGridLayout(
-                    itemCount: 4,
-                    itemBuilder: (context, index) =>
-                        const ProductCardVertical(),
-                  ),
+                  Obx(() {
+                    if (controller.isLoading.value) {
+                      return VerticalProductsListShimmer();
+                    }
+                    if (controller.featuredProducts.isEmpty) {
+                      return Center(child: Text('No Data Found'));
+                    }
+                    final featuredProducts = controller.featuredProducts;
+                    return CustomGridLayout(
+                      itemCount: featuredProducts.length,
+                      itemBuilder: (context, index) =>
+                          ProductCardVertical(product: featuredProducts[index]),
+                    );
+                  })
                 ],
               ),
             ),

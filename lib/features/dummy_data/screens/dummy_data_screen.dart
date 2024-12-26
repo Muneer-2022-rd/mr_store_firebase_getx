@@ -31,6 +31,11 @@ class DummyDataScreen extends StatelessWidget {
         icon: Iconsax.designtools,
         onTap: () => controller.uploadProductsDummyData(),
       ),
+      UploadDummyDataModel(
+        title: TCollections.brands,
+        icon: Iconsax.gallery_export,
+        onTap: () => controller.uploadBrandsDummyData(),
+      ),
     ];
     return Scaffold(
       appBar: CustomAppBar(

@@ -1,3 +1,5 @@
+import 'package:mr_store_getx_firebase/core/formatters/formatter.dart';
+import 'package:mr_store_getx_firebase/features/shop/models/brand_model.dart';
 import 'package:mr_store_getx_firebase/features/shop/models/product_model.dart';
 
 class ProductsDummyData {
@@ -11,8 +13,15 @@ class ProductsDummyData {
       thumbnail: 'assets/images/products/thmbnail_t-shirt.png',
       isFeatured: true,
       categoryId: '101',
-      brandId: 'b010',
+      brand: BrandModel(
+        id: '100',
+        image: 'assets/images/brands/nike.png',
+        name: 'Nike',
+        isFeatured: true,
+        productsCount: 30,
+      ),
       description: 'Comfortable cotton t-shirt.',
+      date: TFormatter.formatDate(DateTime.now()),
       images: [
         'assets/images/products/red_t-shirt.png',
         'assets/images/products/white_t-shirt.png',
@@ -73,7 +82,14 @@ class ProductsDummyData {
       thumbnail: 'assets/images/products/thmbnail_jeans.png',
       isFeatured: true,
       categoryId: '102',
-      brandId: 'b011',
+      brand: BrandModel(
+        id: '100',
+        image: 'assets/images/brands/nike.png',
+        name: 'Nike',
+        isFeatured: true,
+        productsCount: 30,
+      ),
+      date: TFormatter.formatDate(DateTime.now()),
       description: 'Stylish and durable denim jeans.',
       images: [
         'assets/images/products/black_jeans.png',
@@ -114,7 +130,14 @@ class ProductsDummyData {
       thumbnail: 'assets/images/products/jacket.png',
       isFeatured: true,
       categoryId: '103',
-      brandId: 'b012',
+      brand: BrandModel(
+        id: '200',
+        image: 'assets/images/brands/adidas.png',
+        name: 'Adidas',
+        isFeatured: true,
+        productsCount: 43,
+      ),
+      date: TFormatter.formatDate(DateTime.now()),
       description: 'Warm and stylish winter jacket.',
       images: [],
       productType: 'Single',
@@ -124,13 +147,20 @@ class ProductsDummyData {
     ProductModel(
       id: 'cl004',
       title: 'Hoodie',
-      stock: 40,
+      stock: 5,
       price: 35.00,
-      salePrice: 30.00,
+      salePrice: 0.0,
       thumbnail: 'assets/images/products/hoodie.png',
       isFeatured: true,
       categoryId: '104',
-      brandId: 'b013',
+      brand: BrandModel(
+        id: '300',
+        image: 'assets/images/brands/puma.png',
+        name: 'Puma',
+        isFeatured: true,
+        productsCount: 20,
+      ),
+      date: TFormatter.formatDate(DateTime.now()),
       description: 'Cozy hoodie for casual wear.',
       images: [],
       productType: 'Single',

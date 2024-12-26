@@ -23,13 +23,7 @@ class TImages {
   static String settingsMan = '$root/users/man.png';
   static String settingsWoman = '$root/users/woman.png';
   // products
-  static String productThmbnail = '$root/products/thmbnail-shirt.png';
-  static String productBlue = '$root/products/blue-shirt.png';
-  static String productGreen = '$root/products/green-shirt.png';
-  static String productOrange = '$root/products/orange-shirt.png';
-  static String productPink = '$root/products/pink-shirt.png';
-  static String productPurple = '$root/products/purple-shirt.png';
-  static String productYellow = '$root/products/yellow-shirt.png';
+  static String productThmbnail = '$root/products/thmbnail_t-shirt.png';
   // brands
   static String brandNissan = '$root/brands/nissan.png';
   // payment

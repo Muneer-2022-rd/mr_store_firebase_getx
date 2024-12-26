@@ -37,7 +37,7 @@ class ProductCardHorizontal extends StatelessWidget {
                   width: 120,
                   height: 120,
                   child: RoundedImage(
-                    url: TImages.productBlue,
+                    url: TImages.productThmbnail,
                     applyRadius: true,
                   ),
                 ),

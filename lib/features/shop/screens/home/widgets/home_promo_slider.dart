@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:mr_store_getx_firebase/common/widgets/rounded_container.dart';
-import 'package:mr_store_getx_firebase/common/widgets/shimmer_effect.dart';
+import 'package:mr_store_getx_firebase/common/shimmer/shimmer_effect.dart';
 import 'package:mr_store_getx_firebase/features/shop/controllers/banners_controller.dart';
 import 'package:mr_store_getx_firebase/common/widgets/circular_container.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';

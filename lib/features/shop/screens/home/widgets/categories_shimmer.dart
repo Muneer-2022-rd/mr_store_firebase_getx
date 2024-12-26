@@ -1,4 +1,4 @@
-import 'package:mr_store_getx_firebase/common/widgets/shimmer_effect.dart';
+import 'package:mr_store_getx_firebase/common/shimmer/shimmer_effect.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:flutter/material.dart';
 

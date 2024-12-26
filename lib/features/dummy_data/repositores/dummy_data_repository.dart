@@ -9,6 +9,7 @@ import 'package:mr_store_getx_firebase/core/exceptions/firebase_exception.dart';
 import 'package:mr_store_getx_firebase/core/exceptions/format_exception.dart';
 import 'package:mr_store_getx_firebase/core/exceptions/platform_exception.dart';
 import 'package:mr_store_getx_firebase/features/dummy_data/models/banners_dummy_model.dart';
+import 'package:mr_store_getx_firebase/features/dummy_data/models/brands_dummy_model.dart';
 import 'package:mr_store_getx_firebase/features/dummy_data/models/categories_dummy_model.dart';
 import 'package:mr_store_getx_firebase/features/dummy_data/models/products_dummy_model.dart';
 
@@ -31,6 +32,34 @@ class UploadDummyDataRepository extends GetxController {
             .collection(TCollections.categories)
             .doc(category.id)
             .set(category.toJson());
+      }
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on FormatException catch (e) {
+      throw TFormatException(code: e.toString());
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      print(e);
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  Future<void> uploadDummyBrandsData() async {
+    final brands = BrandsDummyData.brands;
+    try {
+      for (var brand in brands) {
+        final imageFile = await getImageDataFromAssets(brand.image!);
+        final imageUrl = await uploadImageUint8ListData(
+          "${TCollections.brands}/images/",
+          imageFile,
+          brand.image!.split('/').last,
+        );
+        brand.image = imageUrl;
+        await _db
+            .collection(TCollections.brands)
+            .doc(brand.id)
+            .set(brand.toJson());
       }
     } on FirebaseException catch (e) {
       throw TFirebaseException(code: e.code).message;

@@ -20,7 +20,6 @@ import 'package:mr_store_getx_firebase/features/shop/screens/checkout/checkout_s
 import 'package:mr_store_getx_firebase/features/shop/screens/home/home_screen.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/profile/profile.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/settings/settings.dart';
-import 'package:mr_store_getx_firebase/features/shop/screens/product_details/product_details_screen.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/product_reviews/product_reviews_screen.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/store/store_screen.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/wishlist/wishlist_screen.dart';
@@ -51,8 +50,6 @@ List<GetPage<dynamic>>? routes = [
       name: AppRoute.changePhoneNumber, page: () => const ChangePhoneScreen()),
   GetPage(
       name: AppRoute.changeUsername, page: () => const ChangeUserNameScreen()),
-  GetPage(
-      name: AppRoute.productDetails, page: () => const ProductDetailsScreen()),
   GetPage(
       name: AppRoute.productReviews, page: () => const ProductReviewsScreen()),
   GetPage(name: AppRoute.address, page: () => const UserAddressScreen()),
