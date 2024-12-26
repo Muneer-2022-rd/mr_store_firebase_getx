@@ -5,6 +5,7 @@ import 'package:mr_store_getx_firebase/core/constants/enum.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
+import 'package:mr_store_getx_firebase/features/shop/controllers/products_controller.dart';
 import 'package:mr_store_getx_firebase/features/shop/models/product_model.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/product_price_text.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/product_title_text.dart';
@@ -18,33 +19,53 @@ class ProductMetaData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
+    final controller = ProductsController.instance;
+    final textDirection = Directionality.of(context);
+    final salePercentage =
+        controller.calculatesalePercentage(product.price, product.salePrice);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
-            RoundedContainer(
-              raduis: TSizes.sm,
-              backgroundColor: Colors.amberAccent.withValues(alpha: 0.8),
-              padding: const EdgeInsets.symmetric(
-                  horizontal: TSizes.sm, vertical: TSizes.xs),
-              child: Text('25%',
+            salePercentage == null
+                ? SizedBox.shrink()
+                : Positioned(
+                    top: 12,
+                    right: textDirection == TextDirection.rtl ? 10 : null,
+                    left: textDirection == TextDirection.ltr ? 10 : null,
+                    child: RoundedContainer(
+                      raduis: TSizes.sm,
+                      backgroundColor:
+                          Colors.amberAccent.withValues(alpha: 0.8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: TSizes.sm, vertical: TSizes.xs),
+                      child: Text(
+                        '$salePercentage%',
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                              color: dark ? TColors.darkerGrey : TColors.white,
+                            ),
+                      ),
+                    ),
+                  ),
+            const SizedBox(width: TSizes.spaceBtnItems),
+            if (product.productType == ProductType.single.name &&
+                product.salePrice > 0)
+              Padding(
+                padding: const EdgeInsets.only(left: TSizes.sm),
+                child: Text(
+                  product.price.toString(),
                   style: Theme.of(context)
                       .textTheme
-                      .labelLarge!
-                      .apply(color: TColors.black)),
-            ),
-            const SizedBox(width: TSizes.spaceBtnItems),
-            Text('\$250',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleSmall!
-                    .apply(decoration: TextDecoration.lineThrough)),
-            const SizedBox(width: TSizes.spaceBtnItems),
-            const ProductPriceText(
-              price: '150',
-              isLarge: true,
-            ),
+                      .labelMedium!
+                      .apply(decoration: TextDecoration.lineThrough),
+                ),
+              ),
+            Padding(
+              padding: const EdgeInsets.only(left: TSizes.sm),
+              child:
+                  ProductPriceText(price: controller.getProductPrice(product)),
+            )
           ],
         ),
         const SizedBox(height: TSizes.spaceBtnItems / 1.5),

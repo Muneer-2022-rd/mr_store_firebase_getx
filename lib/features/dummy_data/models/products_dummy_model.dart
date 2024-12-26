@@ -1,3 +1,4 @@
+import 'package:mr_store_getx_firebase/core/constants/enum.dart';
 import 'package:mr_store_getx_firebase/core/formatters/formatter.dart';
 import 'package:mr_store_getx_firebase/features/shop/models/brand_model.dart';
 import 'package:mr_store_getx_firebase/features/shop/models/product_model.dart';
@@ -28,7 +29,7 @@ class ProductsDummyData {
         'assets/images/products/green_t-shirt.png',
         'assets/images/products/blue_t-shirt.png',
       ],
-      productType: 'variable',
+      productType: ProductType.variable.name,
       productAttributes: [
         ProductAttributesModel(name: 'Size', values: ['S', 'M', 'L', 'XL']),
         ProductAttributesModel(
@@ -95,7 +96,7 @@ class ProductsDummyData {
         'assets/images/products/black_jeans.png',
         'assets/images/products/blue_jeans.png',
       ],
-      productType: 'variable',
+      productType: ProductType.variable.name,
       productAttributes: [
         ProductAttributesModel(name: 'Size', values: ['34', '36']),
         ProductAttributesModel(name: 'Color', values: ['Black', 'Blue']),
@@ -140,7 +141,7 @@ class ProductsDummyData {
       date: TFormatter.formatDate(DateTime.now()),
       description: 'Warm and stylish winter jacket.',
       images: [],
-      productType: 'single',
+      productType: ProductType.single.name,
       productAttributes: [],
       productVariations: [],
     ),
@@ -163,7 +164,7 @@ class ProductsDummyData {
       date: TFormatter.formatDate(DateTime.now()),
       description: 'Cozy hoodie for casual wear.',
       images: [],
-      productType: 'single',
+      productType: ProductType.single.name,
       productAttributes: [],
       productVariations: [],
     ),

@@ -52,29 +52,35 @@ class ProductCardVertical extends StatelessWidget {
                       applyRadius: true,
                       borderRadius: TSizes.cardRadiusLg,
                       networkUrl: true,
+                      fit: BoxFit.cover,
                     ),
-                    Positioned(
-                      top: 12,
-                      right: textDirection == TextDirection.rtl ? 10 : null,
-                      left: textDirection == TextDirection.ltr ? 10 : null,
-                      child: RoundedContainer(
-                        raduis: TSizes.sm,
-                        backgroundColor:
-                            Colors.amberAccent.withValues(alpha: 0.8),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: TSizes.sm, vertical: TSizes.xs),
-                        child: Text(
-                          '$salePercentage%',
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelLarge!
-                              .copyWith(
-                                color:
-                                    dark ? TColors.darkerGrey : TColors.white,
+                    salePercentage == null
+                        ? SizedBox.shrink()
+                        : Positioned(
+                            top: 12,
+                            right:
+                                textDirection == TextDirection.rtl ? 10 : null,
+                            left:
+                                textDirection == TextDirection.ltr ? 10 : null,
+                            child: RoundedContainer(
+                              raduis: TSizes.sm,
+                              backgroundColor:
+                                  Colors.amberAccent.withValues(alpha: 0.8),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: TSizes.sm, vertical: TSizes.xs),
+                              child: Text(
+                                '$salePercentage%',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelLarge!
+                                    .copyWith(
+                                      color: dark
+                                          ? TColors.darkerGrey
+                                          : TColors.white,
+                                    ),
                               ),
-                        ),
-                      ),
-                    ),
+                            ),
+                          ),
                     Positioned(
                       top: 5,
                       right: textDirection == TextDirection.ltr ? 10 : null,
@@ -125,11 +131,11 @@ class ProductCardVertical extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Flexible(
-                          child: Column(
+                          child: Row(
                             children: [
                               if (product.productType ==
-                                      ProductType.single.toString() &&
-                                  product.salePrice > 0.0)
+                                      ProductType.single.name &&
+                                  product.salePrice > 0)
                                 Padding(
                                   padding:
                                       const EdgeInsets.only(left: TSizes.sm),
@@ -146,9 +152,8 @@ class ProductCardVertical extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(left: TSizes.sm),
                                 child: ProductPriceText(
-                                  price: controller.getProductPrice(product),
-                                ),
-                              ),
+                                    price: controller.getProductPrice(product)),
+                              )
                             ],
                           ),
                         ),

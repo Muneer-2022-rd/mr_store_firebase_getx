@@ -40,7 +40,7 @@ class ProductsController extends GetxController {
   String getProductPrice(ProductModel product) {
     double smallestPrice = double.infinity;
     double largestPrice = 0.0;
-    if (product.productType == ProductType.single.toString()) {
+    if (product.productType == ProductType.single.name) {
       return (product.salePrice > 0.0 ? product.salePrice : product.price)
           .toString();
     } else {
@@ -67,7 +67,7 @@ class ProductsController extends GetxController {
   String? calculatesalePercentage(double originalPrice, double salePrice) {
     if (salePrice <= 0.0) return null;
     if (originalPrice <= 0.0) return null;
-    double percentage = ((originalPrice - salePrice) / salePrice) * 100;
+    double percentage = ((originalPrice - salePrice) / originalPrice) * 100;
     return percentage.toStringAsFixed(0);
   }
 

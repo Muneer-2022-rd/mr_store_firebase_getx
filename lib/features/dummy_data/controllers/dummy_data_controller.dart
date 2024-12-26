@@ -26,7 +26,7 @@ class UploadDummyDataController extends GetxController {
     }
   }
 
-    uploadBrandsDummyData() async {
+  uploadBrandsDummyData() async {
     try {
       isLoading.value = true;
 
