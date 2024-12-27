@@ -20,7 +20,6 @@ class ProductMetaData extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     final controller = ProductsController.instance;
-    final textDirection = Directionality.of(context);
     final salePercentage =
         controller.calculatesalePercentage(product.price, product.salePrice);
     return Column(
@@ -28,26 +27,19 @@ class ProductMetaData extends StatelessWidget {
       children: [
         Row(
           children: [
-            salePercentage == null
-                ? SizedBox.shrink()
-                : Positioned(
-                    top: 12,
-                    right: textDirection == TextDirection.rtl ? 10 : null,
-                    left: textDirection == TextDirection.ltr ? 10 : null,
-                    child: RoundedContainer(
-                      raduis: TSizes.sm,
-                      backgroundColor:
-                          Colors.amberAccent.withValues(alpha: 0.8),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: TSizes.sm, vertical: TSizes.xs),
-                      child: Text(
-                        '$salePercentage%',
-                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                              color: dark ? TColors.darkerGrey : TColors.white,
-                            ),
+            if (salePercentage != null)
+              RoundedContainer(
+                raduis: TSizes.sm,
+                backgroundColor: Colors.amberAccent.withOpacity(0.8),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: TSizes.sm, vertical: TSizes.xs),
+                child: Text(
+                  '$salePercentage%',
+                  style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                        color: dark ? TColors.darkerGrey : TColors.white,
                       ),
-                    ),
-                  ),
+                ),
+              ),
             const SizedBox(width: TSizes.spaceBtnItems),
             if (product.productType == ProductType.single.name &&
                 product.salePrice > 0)
@@ -65,7 +57,7 @@ class ProductMetaData extends StatelessWidget {
               padding: const EdgeInsets.only(left: TSizes.sm),
               child:
                   ProductPriceText(price: controller.getProductPrice(product)),
-            )
+            ),
           ],
         ),
         const SizedBox(height: TSizes.spaceBtnItems / 1.5),
@@ -75,7 +67,7 @@ class ProductMetaData extends StatelessWidget {
           children: [
             ProductTitleText(title: "${TTexts.status} :"),
             const SizedBox(width: TSizes.spaceBtnItems / 1.5),
-            Text(product.stock.toString(),
+            Text(controller.getProductStockState(product.stock),
                 style: Theme.of(context).textTheme.titleLarge!)
           ],
         ),
@@ -87,6 +79,7 @@ class ProductMetaData extends StatelessWidget {
               width: 32,
               height: 32,
               overlayColor: dark ? TColors.white : TColors.black,
+              borderColor: dark ? TColors.white : TColors.black,
             ),
             const SizedBox(width: TSizes.spaceBtnItems / 2),
             BrandTileWithVerifiedIcon(
@@ -94,7 +87,8 @@ class ProductMetaData extends StatelessWidget {
               barndTextSizes: TextSizes.medium,
             ),
           ],
-        )
+        ),
+        const SizedBox(height: TSizes.spaceBtnItems / 1.5),
       ],
     );
   }

@@ -30,7 +30,7 @@ class ProductDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const ProductImageSlider(),
+            ProductImageSlider(product: product),
             Padding(
               padding: const EdgeInsets.only(
                 left: TSizes.defaultSpace,
