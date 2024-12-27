@@ -4,6 +4,7 @@ import 'package:mr_store_getx_firebase/common/widgets/seaction_heading.dart';
 import 'package:mr_store_getx_firebase/core/extensions/widget_list_spacing.dart';
 import 'package:mr_store_getx_firebase/features/shop/controllers/home_controller.dart';
 import 'package:mr_store_getx_firebase/features/shop/controllers/products_controller.dart';
+import 'package:mr_store_getx_firebase/features/shop/screens/category/all_categories_screen.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/home_app_bar.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/home_promo_slider.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/home_categories.dart';
@@ -41,6 +42,7 @@ class HomeScreen extends StatelessWidget {
                       title: TTexts.homePopularCategoriesHeading,
                       textColor: TColors.white,
                       buttonTitle: TTexts.homeShowAllButton,
+                      onPressed: () => Get.to(() => AllCategoriesScreen()),
                     ),
                   ),
                   const HomeCategories(),

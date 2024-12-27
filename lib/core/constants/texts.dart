@@ -66,6 +66,7 @@ class TTexts {
   // test products
   static String productTitle = "product_title".tr;
   static String brandTitle = "brand_title".tr;
+  static String categoryTitle = "category_title".tr;
   static String storeYouMightLike = "store_might_like".tr;
   static String storeSports = "store_sports".tr;
   static String storeCloths = "store_cloths".tr;

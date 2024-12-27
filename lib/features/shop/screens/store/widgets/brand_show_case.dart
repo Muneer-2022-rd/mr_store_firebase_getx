@@ -5,6 +5,7 @@ import 'package:mr_store_getx_firebase/core/constants/image.dart';
 
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
+import 'package:mr_store_getx_firebase/features/shop/models/brand_model.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/brand/brand_products_screen.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/store/widgets/brand_card.dart';
 import 'package:flutter/material.dart';
@@ -33,8 +34,9 @@ class BrandShowCase extends StatelessWidget {
           BrandCard(
             showBorder: false,
             onTap: () {
-              Get.to(() => BrandProductsScreen());
+              Get.to(() => BrandProductsScreen(brand: BrandModel.empty()));
             },
+            brand: BrandModel.empty(),
           ),
           SizedBox(height: TSizes.spaceBtnItems),
           Row(

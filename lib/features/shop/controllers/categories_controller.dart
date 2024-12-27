@@ -12,7 +12,7 @@ class CategoriesController extends GetxController {
   final RxList<CategoryModel> allCategories = <CategoryModel>[].obs;
   final RxList<CategoryModel> featuredCategories = <CategoryModel>[].obs;
 
-    @override
+  @override
   void onInit() {
     super.onInit();
     fetchAllCategories();
@@ -28,7 +28,9 @@ class CategoriesController extends GetxController {
         return;
       }
       final categories = await categoriesRepository.getAllCategories();
-      allCategories.assignAll(categories);
+      allCategories.assignAll(categories
+          .where((category) => category.parentId!.isNotEmpty)
+          .toList());
       featuredCategories.assignAll(categories
           .where(
               (category) => category.isFeatured! && category.parentId!.isEmpty)

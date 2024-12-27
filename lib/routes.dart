@@ -12,7 +12,6 @@ import 'package:mr_store_getx_firebase/features/personalization/screens/profile/
 import 'package:mr_store_getx_firebase/features/personalization/screens/profile/change_phone.dart';
 import 'package:mr_store_getx_firebase/features/personalization/screens/profile/change_username.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/brand/all_brands_screen.dart';
-import 'package:mr_store_getx_firebase/features/shop/screens/brand/brand_products_screen.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/order/orders_screen.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/product/all_products_screen.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/cart/cart_screen.dart';
@@ -57,11 +56,8 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.cart, page: () => const CartScreen()),
   GetPage(name: AppRoute.checkout, page: () => const CheckoutScreen()),
   GetPage(name: AppRoute.wishlist, page: () => const FavoriteScreen()),
- 
   GetPage(name: AppRoute.allProducts, page: () => const AllProductsScreen()),
   GetPage(name: AppRoute.allBrands, page: () => const AllBrandsScreen()),
-  GetPage(
-      name: AppRoute.brandProducts, page: () => const BrandProductsScreen()),
   GetPage(name: AppRoute.orders, page: () => const OrdersScreen()),
   GetPage(name: AppRoute.dummy, page: () => const UploadDummyDataScreen()),
 ];

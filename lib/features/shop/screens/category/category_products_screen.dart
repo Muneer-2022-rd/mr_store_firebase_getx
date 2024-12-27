@@ -5,26 +5,25 @@ import 'package:mr_store_getx_firebase/common/widgets/custom_app_bar.dart';
 import 'package:mr_store_getx_firebase/common/widgets/custom_grid_layout.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/features/shop/controllers/products_controller.dart';
-import 'package:mr_store_getx_firebase/features/shop/models/brand_model.dart';
+import 'package:mr_store_getx_firebase/features/shop/models/category_model.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/product_card_vertical.dart';
-import 'package:mr_store_getx_firebase/features/shop/screens/store/widgets/brand_card.dart';
 
-class BrandProductsScreen extends StatefulWidget {
-  final BrandModel brand;
-  const BrandProductsScreen({super.key, required this.brand});
+class CategoryProductsScreen extends StatefulWidget {
+  final CategoryModel category;
+  const CategoryProductsScreen({super.key, required this.category});
 
   @override
-  State<BrandProductsScreen> createState() => _BrandProductsScreenState();
+  State<CategoryProductsScreen> createState() => _CategoryProductsScreenState();
 }
 
-class _BrandProductsScreenState extends State<BrandProductsScreen> {
+class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
   final controller = ProductsController.instance;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      controller.fetchProductsByBrand(widget.brand.id!);
+      controller.fetchProductsByCategory(widget.category.id!);
     });
   }
 
@@ -34,7 +33,7 @@ class _BrandProductsScreenState extends State<BrandProductsScreen> {
       appBar: CustomAppBar(
         showBackArrow: true,
         title: Text(
-          widget.brand.name!,
+          widget.category.name!,
           style: Theme.of(context).textTheme.headlineMedium,
         ),
       ),
@@ -43,8 +42,6 @@ class _BrandProductsScreenState extends State<BrandProductsScreen> {
           padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
-              BrandCard(showBorder: true, brand: widget.brand),
-              SizedBox(height: TSizes.spaceBtnSections),
               DropdownButtonFormField(
                 decoration: InputDecoration(
                   prefixIcon: Icon(Iconsax.sort),
@@ -68,13 +65,13 @@ class _BrandProductsScreenState extends State<BrandProductsScreen> {
               Obx(() {
                 if (controller.isLoading.value) {
                   return Center(child: CircularProgressIndicator());
-                } else if (controller.productsByBrand.isEmpty) {
+                } else if (controller.productsByCategory.isEmpty) {
                   return Center(child: Text('No Data Yet'));
                 } else {
                   return CustomGridLayout(
-                    itemCount: controller.productsByBrand.length,
+                    itemCount: controller.productsByCategory.length,
                     itemBuilder: (context, index) => ProductCardVertical(
-                        product: controller.productsByBrand[index]),
+                        product: controller.productsByCategory[index]),
                   );
                 }
               })

@@ -33,4 +33,49 @@ class ProductsRepository extends GetxController {
       throw Exception();
     }
   }
+  Future<List<ProductModel>> getProductsByBrand(String brandId) async {
+    try {
+      final productsSnapshot = await _db
+          .collection(TCollections.products)
+          .where('brand.id', isEqualTo: brandId)
+          .get();
+      final productsList = productsSnapshot.docs
+          .map(
+              (productsDocument) => ProductModel.fromSnapshot(productsDocument))
+          .toList();
+      return productsList;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on FormatException catch (e) {
+      throw TFormatException(code: e.toString());
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      print(e);
+      throw Exception();
+    }
+  }
+
+  Future<List<ProductModel>> getProductsByCategory(String categoryId) async {
+    try {
+      final productsSnapshot = await _db
+          .collection(TCollections.products)
+          .where('categoryId', isEqualTo: categoryId)
+          .get();
+      final productsList = productsSnapshot.docs
+          .map(
+              (productsDocument) => ProductModel.fromSnapshot(productsDocument))
+          .toList();
+      return productsList;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(code: e.code).message;
+    } on FormatException catch (e) {
+      throw TFormatException(code: e.toString());
+    } on PlatformException catch (e) {
+      throw TPlatformException(code: e.code).message;
+    } catch (e) {
+      print(e);
+      throw Exception();
+    }
+  }
 }
