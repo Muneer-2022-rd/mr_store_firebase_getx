@@ -1,9 +1,10 @@
-
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mr_store_getx_firebase/common/widgets/seaction_heading.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/features/shop/models/category_model.dart';
-import 'package:mr_store_getx_firebase/features/shop/screens/sub_category/widgets/product_card_horizontal.dart';
+import 'package:mr_store_getx_firebase/features/shop/screens/category/category_products_screen.dart';
+import 'package:mr_store_getx_firebase/features/shop/screens/sub_category/widgets/sub_category_section_list.dart';
 
 class SubCategorySection extends StatelessWidget {
   final CategoryModel category;
@@ -19,20 +20,12 @@ class SubCategorySection extends StatelessWidget {
       children: [
         SeactionHeading(
           title: category.name!,
-          onPressed: () {},
+          onPressed: () =>
+              Get.to(() => CategoryProductsScreen(category: category)),
           showActionButton: true,
         ),
         SizedBox(height: TSizes.spaceBtnItems),
-        SizedBox(
-          height: 120,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            separatorBuilder: (context, index) =>
-                SizedBox(width: TSizes.spaceBtnItems),
-            itemCount: 3,
-            itemBuilder: (context, index) => ProductCardHorizontal(),
-          ),
-        )
+        SubCategorySectionList(categoryId: category.id!)
       ],
     );
   }

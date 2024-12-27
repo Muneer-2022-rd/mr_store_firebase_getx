@@ -47,7 +47,8 @@ class ProductsController extends GetxController {
         isLoading.value = false;
         return;
       }
-      final products = await productsRepository.getProductsByCategory(categoryId);
+      final products =
+          await productsRepository.getProductsByCategory(categoryId);
       productsByCategory.assignAll(products);
       isLoading.value = false;
     } catch (e) {
@@ -57,6 +58,7 @@ class ProductsController extends GetxController {
       isLoading.value = false;
     }
   }
+
 
   fetchProductsByBrand(String brandId) async {
     try {

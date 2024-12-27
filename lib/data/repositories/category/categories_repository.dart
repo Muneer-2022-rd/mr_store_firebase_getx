@@ -53,4 +53,5 @@ class CategoriesRepository extends GetxController {
       throw Exception();
     }
   }
+
 }
