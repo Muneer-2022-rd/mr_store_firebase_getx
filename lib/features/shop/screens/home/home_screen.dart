@@ -79,8 +79,9 @@ class HomeScreen extends StatelessWidget {
                     final featuredProducts = controller.featuredProducts;
                     return CustomGridLayout(
                       itemCount: featuredProducts.length,
-                      itemBuilder: (context, index) =>
-                          ProductCardVertical(product: featuredProducts[index]),
+                      itemBuilder: (context, index) => ProductCardVertical(
+                        product: featuredProducts[index],
+                      ),
                     );
                   })
                 ],

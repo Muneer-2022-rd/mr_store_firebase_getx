@@ -1,5 +1,6 @@
 import 'package:mr_store_getx_firebase/common/widgets/seaction_heading.dart';
 import 'package:mr_store_getx_firebase/core/constants/colors.dart';
+import 'package:mr_store_getx_firebase/core/constants/enum.dart';
 
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
@@ -41,8 +42,8 @@ class ProductDetailsScreen extends StatelessWidget {
                 children: <Widget>[
                   const RatingAndShareWidget(),
                   ProductMetaData(product: product),
-                  const ProductAttributes(),
-                  const SizedBox(height: TSizes.spaceBtnSections),
+                  if (product.productType == ProductType.variable.name)
+                    ProductAttributes(product: product),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(

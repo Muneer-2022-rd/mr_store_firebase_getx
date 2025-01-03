@@ -1,7 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-void showImageDialog(
-    {required BuildContext context, required String imageUrl,required bool isNetworkImage}) {
+void showImageDialog({
+  required BuildContext context,
+  required String imageUrl,
+  required bool isNetworkImage,
+}) {
   // this is our simple dialog display code
   showDialog(
     context: context,
@@ -10,7 +14,9 @@ void showImageDialog(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            isNetworkImage ? Image.network(imageUrl) : Image.asset(imageUrl),
+            isNetworkImage
+                ? CachedNetworkImage(imageUrl: imageUrl)
+                : Image.asset(imageUrl),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();

@@ -1,7 +1,7 @@
 import 'package:mr_store_getx_firebase/common/styles/shadow_style.dart';
 import 'package:mr_store_getx_firebase/common/widgets/circular_icon.dart';
 import 'package:mr_store_getx_firebase/core/constants/enum.dart';
-import 'package:mr_store_getx_firebase/features/shop/controllers/products_controller.dart';
+import 'package:mr_store_getx_firebase/features/shop/controllers/product/product_controller.dart';
 import 'package:mr_store_getx_firebase/features/shop/models/product_model.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/product_price_text.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/product_title_text.dart';
@@ -22,7 +22,7 @@ class ProductCardVertical extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = ProductsController.instance;
+    final controller = Get.put(ProductController());
     final salePercentage =
         controller.calculatesalePercentage(product.price, product.salePrice);
     final dark = THelperFunctions.isDarkMode(context);

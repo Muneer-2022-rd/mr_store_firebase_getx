@@ -5,7 +5,7 @@ import 'package:mr_store_getx_firebase/core/constants/enum.dart';
 import 'package:mr_store_getx_firebase/core/constants/sizes.dart';
 import 'package:mr_store_getx_firebase/core/constants/texts.dart';
 import 'package:mr_store_getx_firebase/core/helpers/helper_functions.dart';
-import 'package:mr_store_getx_firebase/features/shop/controllers/products_controller.dart';
+import 'package:mr_store_getx_firebase/features/shop/controllers/product/product_controller.dart';
 import 'package:mr_store_getx_firebase/features/shop/models/product_model.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/product_price_text.dart';
 import 'package:mr_store_getx_firebase/features/shop/screens/home/widgets/product_title_text.dart';
@@ -19,7 +19,7 @@ class ProductMetaData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
-    final controller = ProductsController.instance;
+    final controller = ProductController.instance;
     final salePercentage =
         controller.calculatesalePercentage(product.price, product.salePrice);
     return Column(
@@ -30,7 +30,7 @@ class ProductMetaData extends StatelessWidget {
             if (salePercentage != null)
               RoundedContainer(
                 raduis: TSizes.sm,
-                backgroundColor: Colors.amberAccent.withOpacity(0.8),
+                backgroundColor: Colors.amberAccent.withValues(alpha: 0.8),
                 padding: const EdgeInsets.symmetric(
                     horizontal: TSizes.sm, vertical: TSizes.xs),
                 child: Text(
@@ -78,6 +78,8 @@ class ProductMetaData extends StatelessWidget {
               url: product.brand!.image!,
               width: 32,
               height: 32,
+              isNetworkImage: true,
+              padding: EdgeInsets.all(5),
               overlayColor: dark ? TColors.white : TColors.black,
               borderColor: dark ? TColors.white : TColors.black,
             ),
